@@ -22,8 +22,8 @@
       "nombre": "Maceteros",
       "emoji": "🌸",
       "productos": [
-        { "id": 3, "nombre": "Macetero 3 flores", "descripcion": "Macetero tejido con carita feliz y 3 flores", "precio": 15000, "imagen": "fotos/maceteros_flores.jpg", "colores": ["Rojo", "Morado", "Verde", "Rosa"], "disponible": true },
-        { "id": 4, "nombre": "Macetero 4 flores (grande)", "descripcion": "Macetero tejido con carita feliz y 4 flores — más grande", "precio": 18000, "imagen": "fotos/maceteros_flores.jpg", "colores": ["Amarillo"], "disponible": true },
+        { "id": 3, "nombre": "Macetero 3 flores", "descripcion": "Macetero con carita feliz y 3 flores", "precio": 15000, "imagen": "fotos/maceteros_flores.jpg", "colores": ["Rojo", "Morado", "Verde", "Rosa"], "disponible": true },
+        { "id": 4, "nombre": "Macetero 4 flores (grande)", "descripcion": "Macetero con carita feliz y 4 flores — más grande", "precio": 18000, "imagen": "fotos/maceteros_flores.jpg", "colores": ["Amarillo"], "disponible": true },
         { "id": 5, "nombre": "Macetero 3 corazones", "descripcion": "Macetero con carita feliz y 3 corazones", "precio": 18000, "imagen": "fotos/mac_corazones.jpg", "colores": ["Azul", "Verde"], "disponible": true },
         { "id": 6, "nombre": "Macetero 4 corazones (grande)", "descripcion": "Macetero con carita feliz y 4 corazones — más grande", "precio": 20000, "imagen": "fotos/mac_corazones.jpg", "colores": ["Amarillo"], "disponible": true },
         { "id": 7, "nombre": "Macetero Love ❤️", "descripcion": "Macetero especial con corazones rojos y letrero 'love'", "precio": 25000, "imagen": "fotos/mac_love.jpg", "colores": ["Rojo"], "disponible": true }
