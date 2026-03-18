@@ -593,14 +593,24 @@ const DATOS_EJEMPLO={
 
 
 // MODO NOCTURNO
+// MODO NOCTURNO
+const LOGO_LIGHT = 'fotos/logo.png';
+const LOGO_DARK  = 'fotos/logo_dark.png';
+
+function setLogo(dark) {
+  const logo = document.getElementById('logo-wrap');
+  if(logo && logo.tagName === 'IMG') logo.src = dark ? LOGO_DARK : LOGO_LIGHT;
+}
 function toggleDark() {
   const isDark = document.body.classList.toggle('dark');
   document.getElementById('toggle-dark').textContent = isDark ? '☀️' : '🌙';
+  setLogo(isDark);
   localStorage.setItem('florevah-dark', isDark ? '1' : '0');
 }
 if(localStorage.getItem('florevah-dark')==='1'){
   document.body.classList.add('dark');
   document.getElementById('toggle-dark').textContent='☀️';
+  setLogo(true);
 }
 
 cargarCatalogo();
