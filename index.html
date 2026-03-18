@@ -408,13 +408,6 @@ function renderizar({negocio, categorias}) {
   // Catálogo
   const main=document.getElementById('catalogo');
 
-  // Banner día del hombre solo en vista "todos"
-  const bannerHombre = document.createElement('div');
-  bannerHombre.id='banner-hombre';
-  bannerHombre.style.cssText='max-width:1100px;margin:0 auto 20px;padding:0 20px;';
-  bannerHombre.innerHTML=`<div style="background:linear-gradient(135deg,#1a0a0a,#3d0000);color:#ff6b6b;font-size:15px;font-weight:800;padding:12px 24px;border-radius:30px;border:1.5px solid #ff4444;text-align:center;letter-spacing:.5px;">🔥 Regalos para el Día del Hombre 🔥 — ¡Detalles únicos que sorprenden!</div>`;
-  main.appendChild(bannerHombre);
-
   categorias.forEach((cat,ci)=>{
     const sec=document.createElement('section');
     sec.className='seccion'; sec.dataset.cat=cat.id;
