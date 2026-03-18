@@ -260,6 +260,76 @@
     }
     .footer-nums a:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(124,58,237,.2); }
 
+
+    /* ── MODO NOCTURNO ── */
+    body.dark {
+      --rosa:   #c0608a;
+      --morado: #c084fc;
+      --lila:   #a855f7;
+      --crema:  #1a0f2e;
+      --texto:  #f0e6ff;
+      --gris:   #8b7aaa;
+      --sombra: rgba(192,132,252,0.15);
+      background:#1a0f2e; color:#f0e6ff;
+    }
+    body.dark::before {
+      background:
+        radial-gradient(ellipse at 8% 8%,rgba(124,58,237,.28) 0%,transparent 50%),
+        radial-gradient(ellipse at 92% 92%,rgba(88,28,135,.32) 0%,transparent 50%),
+        radial-gradient(ellipse at 92% 8%,rgba(167,139,250,.14) 0%,transparent 40%);
+    }
+    body.dark .banner-intro { background:linear-gradient(135deg,rgba(88,28,135,.5),rgba(59,7,100,.6)); border-color:rgba(192,132,252,.35); color:#e9d5ff; }
+    body.dark .banner-flor { color:#c084fc; }
+    body.dark .filtro-btn { background:#2d1b4e; border-color:#7c3aed; color:#e9d5ff; }
+    body.dark .filtro-btn:hover, body.dark .filtro-btn.activo { background:#7c3aed; color:white; }
+    body.dark .tarjeta { background:#241545; border-color:rgba(167,139,250,.22); }
+    body.dark .tarjeta-nombre { color:#f0e6ff; }
+    body.dark .tarjeta-img-wrap, body.dark .tarjeta-img-placeholder { background:linear-gradient(135deg,#3b1f5e,#1e1040); }
+    body.dark .precio { color:#c084fc; }
+    body.dark .btn-pedir { background:#7c3aed; }
+    body.dark .tarjeta-figura .precio { color:#f87171; }
+    body.dark .tarjeta-figura .btn-pedir { background:#dc2626; }
+    body.dark .chip-rojo    { background:#3b0f0f; color:#fca5a5; border-color:#7f1d1d; }
+    body.dark .chip-amarillo{ background:#2d1f00; color:#fde68a; border-color:#78350f; }
+    body.dark .chip-morado  { background:#2e1065; color:#e9d5ff; border-color:#7c3aed; }
+    body.dark .chip-azul    { background:#0f172a; color:#93c5fd; border-color:#1e3a5f; }
+    body.dark .chip-verde   { background:#0f2a1a; color:#6ee7b7; border-color:#065f46; }
+    body.dark .chip-rosa, body.dark .chip-rosado { background:#3b1040; color:#f0abcf; border-color:#831843; }
+    body.dark .chip-beige   { background:#2a1a00; color:#fcd34d; border-color:#78350f; }
+    body.dark .chip-default, body.dark .chip-otros { background:#2d1b4e; color:#c4b5fd; border-color:#4c1d95; }
+    body.dark .seccion-titulo::after { background:linear-gradient(90deg,#7c3aed,transparent); }
+    body.dark .seccion-titulo h2 { color:#f0e6ff; }
+    body.dark .porque-section { background:linear-gradient(135deg,#1e0a2e,#2d0f4e); }
+    body.dark .porque-card { background:#241545; border-color:rgba(167,139,250,.2); }
+    body.dark .porque-card-desc { color:#9d8fc0; }
+    body.dark .porque-frase { color:#c084fc; }
+    body.dark footer { background:#1e1040; border-color:rgba(167,139,250,.2); }
+    body.dark .footer-marca { color:#c084fc; }
+    body.dark .footer-nums a { background:linear-gradient(135deg,#2d1b4e,#1e0a2e); color:#c084fc; }
+    body.dark .modal { background:#1e1040; }
+    body.dark .modal-titulo { color:#c084fc; }
+    body.dark .modal-sub { color:#8b7aaa; }
+    body.dark .modal-producto { background:#2d1b4e; border-color:#4c1d95; color:#f0e6ff; }
+    body.dark .modal-label { color:#a855f7; }
+    body.dark .canal-btn { background:linear-gradient(135deg,#2d1b4e,#1e0a2e); }
+    body.dark .canal-btn:hover { border-color:#a855f7; }
+    body.dark .canal-nombre { color:#c084fc; }
+    body.dark .canal-num { color:#f0e6ff; }
+    body.dark .modal-cerrar { color:#8b7aaa; }
+
+    /* Botón toggle modo nocturno */
+    .toggle-dark {
+      position:fixed; bottom:24px; right:24px; z-index:50;
+      width:50px; height:50px; border-radius:50%;
+      border:2px solid var(--rosa); background:white;
+      font-size:22px; cursor:pointer;
+      box-shadow:0 4px 20px rgba(124,58,237,.25);
+      transition:all .3s ease;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .toggle-dark:hover { transform:scale(1.12) rotate(15deg); box-shadow:0 6px 24px rgba(124,58,237,.4); }
+    body.dark .toggle-dark { background:#2d1b4e; border-color:#7c3aed; }
+
     @media (max-width:480px) {
       .grid { grid-template-columns:repeat(2,1fr); gap:10px; }
       .tarjeta-body { padding:9px 10px 11px; }
@@ -319,6 +389,9 @@
     <div class="footer-nums" id="footer-nums"></div>
   </footer>
 </div>
+
+<!-- BOTÓN MODO NOCTURNO -->
+<button class="toggle-dark" id="toggle-dark" title="Modo nocturno" onclick="toggleDark()">🌙</button>
 
 <!-- MODAL CANAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="cerrarModal(event)">
@@ -517,6 +590,18 @@ const DATOS_EJEMPLO={
     ]}
   ]
 };
+
+
+// MODO NOCTURNO
+function toggleDark() {
+  const isDark = document.body.classList.toggle('dark');
+  document.getElementById('toggle-dark').textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('florevah-dark', isDark ? '1' : '0');
+}
+if(localStorage.getItem('florevah-dark')==='1'){
+  document.body.classList.add('dark');
+  document.getElementById('toggle-dark').textContent='☀️';
+}
 
 cargarCatalogo();
 </script>
