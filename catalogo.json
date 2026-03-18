@@ -23,9 +23,9 @@
       "emoji": "🌸",
       "productos": [
         { "id": 3, "nombre": "Macetero 3 flores", "descripcion": "Macetero con carita feliz y 3 flores", "precio": 15000, "imagen": "fotos/maceteros_flores.jpg", "colores": ["Rojo", "Morado", "Verde", "Rosa"], "disponible": true },
-        { "id": 4, "nombre": "Macetero 4 flores (grande)", "descripcion": "Macetero con carita feliz y 4 flores — más grande", "precio": 18000, "imagen": "fotos/maceteros_flores.jpg", "colores": ["Amarillo"], "disponible": true },
+        { "id": 4, "nombre": "Macetero 4 flores", "descripcion": "Macetero con carita feliz y 4 flores — más grande", "precio": 18000, "imagen": "fotos/maceteros_flores.jpg", "colores": ["Amarillo"], "disponible": true },
         { "id": 5, "nombre": "Macetero 3 corazones", "descripcion": "Macetero con carita feliz y 3 corazones", "precio": 18000, "imagen": "fotos/mac_corazones.jpg", "colores": ["Azul", "Verde"], "disponible": true },
-        { "id": 6, "nombre": "Macetero 4 corazones (grande)", "descripcion": "Macetero con carita feliz y 4 corazones — más grande", "precio": 20000, "imagen": "fotos/mac_corazones.jpg", "colores": ["Amarillo"], "disponible": true },
+        { "id": 6, "nombre": "Macetero 4 corazones", "descripcion": "Macetero con carita feliz y 4 corazones — más grande", "precio": 20000, "imagen": "fotos/mac_corazones.jpg", "colores": ["Amarillo"], "disponible": true },
         { "id": 7, "nombre": "Macetero Love ❤️", "descripcion": "Macetero especial con corazones rojos y letrero 'love'", "precio": 25000, "imagen": "fotos/mac_love.jpg", "colores": ["Rojo"], "disponible": true }
       ]
     },
@@ -37,6 +37,17 @@
         { "id": 8, "nombre": "Girasol con tarjeta", "descripcion": "Girasoles artesanales con tarjeta 'Feliz Día' y moño", "precio": 12000, "imagen": "fotos/girasoles.jpg", "colores": [], "disponible": true },
         { "id": 9, "nombre": "Gerbera con tarjeta", "descripcion": "Gerbera artesanal con tarjeta 'Feliz Día' y moño", "precio": 12000, "imagen": "fotos/gerberas.jpg", "colores": ["Azul", "Morado", "Beige", "Rosado"], "disponible": true },
         { "id": 10, "nombre": "Flor especial pequeña con tarjeta", "descripcion": "Flor artesanal pequeña con tarjeta 'Feliz Día' y moño", "precio": 8000, "imagen": "fotos/flores_tarjeta.jpg", "colores": ["Rojo", "Amarillo", "Morado", "Otros"], "disponible": true }
+      ]
+    },
+    {
+      "id": "figuras",
+      "nombre": "Colección de Figuras y Personajes",
+      "emoji": "🎭",
+      "banner": "🔥 Regalos para el Día del Hombre 🔥",
+      "productos": [
+        { "id": 11, "nombre": "🐢 Squirtle", "descripcion": "Figura artesanal de Squirtle hecha a mano, con detalle de caparazón en la espalda", "precio": 50000, "imagen": "fotos/squirtle_frente.jpg", "imagen2": "fotos/squirtle_detalle.jpg", "colores": [], "disponible": true },
+        { "id": 12, "nombre": "🦇 Batman", "descripcion": "Macetero Batman con cara tejida y capa decorativa con logo dorado", "precio": 26000, "imagen": "fotos/batman_frente.jpg", "imagen2": "fotos/batman_detalle.jpg", "colores": [], "disponible": true },
+        { "id": 13, "nombre": "🔴 Deadpool", "descripcion": "Macetero Deadpool con bonsái artesanal y espadas incluidas", "precio": 32000, "imagen": "fotos/deadpool_frente.jpg", "imagen2": "fotos/deadpool_detalle.jpg", "colores": [], "disponible": true }
       ]
     }
   ]
