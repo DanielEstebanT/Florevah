@@ -215,6 +215,56 @@
     @keyframes popIn { from{opacity:0;transform:scale(.85)} to{opacity:1;transform:scale(1)} }
     .modal-cerrar { position:absolute; top:14px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--gris); }
     .modal-cerrar:hover { color:var(--texto); }
+
+    /* ADICIONALES EN MODAL */
+    .adicionales-wrap {
+      background: #faf5ff;
+      border: 1.5px solid #ede9fe;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    body.dark .adicionales-wrap { background:#2d1b4e; border-color:#4c1d95; }
+    .adicionales-titulo {
+      font-size: 13px; font-weight: 800;
+      color: var(--morado); margin-bottom: 10px;
+    }
+    .adicional-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(192,132,252,.15);
+      cursor: pointer;
+    }
+    .adicional-item:last-child { border-bottom: none; }
+    .adicional-check {
+      width: 20px; height: 20px; border-radius: 6px;
+      border: 2px solid var(--lila);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .2s;
+      background: white;
+      font-size: 12px;
+    }
+    body.dark .adicional-check { background: #1e1040; }
+    .adicional-item.seleccionado .adicional-check {
+      background: var(--morado); border-color: var(--morado); color: white;
+    }
+    .adicional-info { flex: 1; }
+    .adicional-nombre { font-size: 13px; font-weight: 700; color: var(--texto); }
+    body.dark .adicional-nombre { color: #f0e6ff; }
+    .adicional-desc { font-size: 11px; color: var(--gris); }
+    .adicional-precio {
+      font-size: 13px; font-weight: 800; color: var(--morado);
+      white-space: nowrap;
+    }
+    .modal-total {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1.5px solid rgba(192,132,252,.25);
+      font-size: 15px; font-weight: 800;
+      color: var(--texto); text-align: right;
+    }
+    body.dark .modal-total { color: #f0e6ff; }
+    .modal-total span { color: var(--morado); font-size: 18px; }
+
     .modal-titulo { font-family:'Great Vibes',cursive; font-size:32px; color:var(--morado); text-align:center; margin-bottom:4px; }
     .modal-sub { text-align:center; font-size:12px; color:var(--gris); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
     .modal-producto { text-align:center; font-size:14px; font-weight:800; color:var(--texto); margin-bottom:20px; padding:8px 14px; background:#faf5ff; border-radius:12px; border:1px solid #ede9fe; }
@@ -400,6 +450,14 @@
     <div class="modal-titulo">Florevah</div>
     <div class="modal-sub">✿ flores artesanales ✿</div>
     <div class="modal-producto" id="modal-producto-nombre"></div>
+
+    <!-- ADICIONALES -->
+    <div class="adicionales-wrap" id="adicionales-wrap">
+      <div class="adicionales-titulo">¿Deseas agregar algo? 🎁</div>
+      <div id="adicionales-lista"></div>
+      <div class="modal-total" id="modal-total"></div>
+    </div>
+
     <div class="modal-label">¿Por cuál canal nos escribes?</div>
     <a class="canal-btn" id="canal-1" href="#" target="_blank">
       <span class="canal-icon">💬</span>
@@ -430,14 +488,62 @@ function formatPrecio(n){ return '$'+n.toLocaleString('es-CO'); }
 let TEL1='', TEL2='';
 
 // MODAL
+let ADICIONALES_GLOBAL = [];
+let precioBase = 0;
+let nombreProducto = '';
+
 function abrirModal(nombre, precio) {
-  const txt = encodeURIComponent(`Hola! Me interesa: *${nombre}* — ${formatPrecio(precio)}`);
+  precioBase = precio;
+  nombreProducto = nombre;
   document.getElementById('modal-producto-nombre').textContent = `${nombre} — ${formatPrecio(precio)}`;
-  document.getElementById('canal-1').href = `https://wa.me/57${TEL1.replace(/\D/g,'')}?text=${txt}`;
-  document.getElementById('canal-2').href = `https://wa.me/57${TEL2.replace(/\D/g,'')}?text=${txt}`;
   document.getElementById('num-canal-1').textContent = TEL1;
   document.getElementById('num-canal-2').textContent = TEL2;
+
+  // Renderizar adicionales
+  const lista = document.getElementById('adicionales-lista');
+  lista.innerHTML = '';
+  ADICIONALES_GLOBAL.forEach(ad => {
+    const item = document.createElement('div');
+    item.className = 'adicional-item';
+    item.dataset.id = ad.id;
+    item.dataset.precio = ad.precio;
+    item.innerHTML = `
+      <div class="adicional-check">✓</div>
+      <div class="adicional-info">
+        <div class="adicional-nombre">${ad.nombre}</div>
+        <div class="adicional-desc">${ad.descripcion}</div>
+      </div>
+      <div class="adicional-precio">+${formatPrecio(ad.precio)}</div>`;
+    item.onclick = () => {
+      item.classList.toggle('seleccionado');
+      actualizarTotal();
+    };
+    lista.appendChild(item);
+  });
+
+  actualizarTotal();
   document.getElementById('modal-overlay').classList.add('abierto');
+}
+
+function actualizarTotal() {
+  const seleccionados = document.querySelectorAll('.adicional-item.seleccionado');
+  let extra = 0;
+  let extras = [];
+  seleccionados.forEach(el => {
+    extra += parseInt(el.dataset.precio);
+    extras.push(el.querySelector('.adicional-nombre').textContent);
+  });
+  const total = precioBase + extra;
+  document.getElementById('modal-total').innerHTML =
+    `Total: <span>${formatPrecio(total)}</span>`;
+
+  // Actualizar links WA
+  let msg = `Hola! Me interesa: *${nombreProducto}* — ${formatPrecio(precioBase)}`;
+  if(extras.length) msg += `\nAdicionales: ${extras.join(', ')} (+${formatPrecio(extra)})`;
+  msg += `\nTotal: ${formatPrecio(total)}`;
+  const txt = encodeURIComponent(msg);
+  document.getElementById('canal-1').href = `https://wa.me/57${TEL1.replace(/\D/g,'')}?text=${txt}`;
+  document.getElementById('canal-2').href = `https://wa.me/57${TEL2.replace(/\D/g,'')}?text=${txt}`;
 }
 function cerrarModal(e) {
   if (!e || e.target===document.getElementById('modal-overlay') || e.currentTarget.classList.contains('modal-cerrar'))
@@ -453,7 +559,8 @@ async function cargarCatalogo() {
   renderizar(data);
 }
 
-function renderizar({negocio, categorias}) {
+function renderizar(data) {
+  const {negocio, categorias} = data;
   document.title = negocio.nombre+' — Catálogo';
   document.getElementById('marca-nombre').textContent = negocio.nombre;
   document.getElementById('marca-slogan').textContent = negocio.slogan;
@@ -461,6 +568,7 @@ function renderizar({negocio, categorias}) {
   document.documentElement.style.setProperty('--morado', negocio.color_principal);
   document.documentElement.style.setProperty('--rosa',   negocio.color_acento);
   TEL1=negocio.telefono1; TEL2=negocio.telefono2;
+  ADICIONALES_GLOBAL = data.adicionales || [];
 
   const nums=document.getElementById('footer-nums');
   [negocio.telefono1,negocio.telefono2].filter(Boolean).forEach((tel,i)=>{
@@ -592,7 +700,6 @@ const DATOS_EJEMPLO={
 };
 
 
-// MODO NOCTURNO
 // MODO NOCTURNO
 const LOGO_LIGHT = 'fotos/logo.png';
 const LOGO_DARK  = 'fotos/logo_dark.png';
