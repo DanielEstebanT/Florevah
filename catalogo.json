@@ -49,6 +49,23 @@
         { "id": 9, "nombre": "Gerbera con tarjeta", "descripcion": "Gerbera artesanal con tarjeta 'Feliz Día' y moño", "precio": 12000, "imagen": "fotos/gerberas.jpg", "colores": ["Azul", "Morado", "Beige", "Rosado"], "disponible": true },
         { "id": 10, "nombre": "Flor especial pequeña con tarjeta", "descripcion": "Flor artesanal pequeña con tarjeta 'Feliz Día' y moño", "precio": 8000, "imagen": "fotos/flores_tarjeta.jpg", "colores": ["Rojo", "Amarillo", "Morado", "Otros"], "disponible": true }
       ]
+    },
+    {
+      "id": "tematicos",
+      "nombre": "Maceteros Temáticos",
+      "emoji": "⚽",
+      "productos": [
+        {
+          "id": 14,
+          "nombre": "⚽ Macetero FC Barcelona",
+          "descripcion": "Macetero artesanal del Barça (el valor NO incluye chocolates), flor personalizable (en este caso un lirío de la paz)",
+          "precio": 32000,
+          "imagen": "fotos/barcelona.jpg",
+          "imagen2": "",
+          "colores": [],
+          "disponible": true
+        }
+      ]
     }
   ]
 }
