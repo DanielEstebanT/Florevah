@@ -14,8 +14,8 @@
       "emoji": "🎭",
       "banner": "🔥 Regalos para el Día del Hombre 🔥",
       "productos": [
-        { "id": 11, "nombre": "🐢 Squirtle", "descripcion": "Figura artesanal de Squirtle hecha a mano, con detalle de caparazón en la espalda", "precio": 50000, "imagen": "fotos/squirtle_frente.jpg", "imagen2": "fotos/squirtle_detalle.jpg", "colores": [], "disponible": true },
-        { "id": 12, "nombre": "🦇 Batman", "descripcion": "Macetero Batman con cara tejida y capa decorativa con logo dorado", "precio": 26000, "imagen": "fotos/batman_frente.jpg", "imagen2": "fotos/batman_detalle.jpg", "colores": [], "disponible": true },
+        { "id": 11, "nombre": "🐢 Squirtle", "descripcion": "Figura artesanal de Squirtle hecho a mano, con ojos hechos a mano", "precio": 50000, "imagen": "fotos/squirtle_frente.jpg", "imagen2": "fotos/squirtle_detalle.jpg", "colores": [], "disponible": true },
+        { "id": 12, "nombre": "🦇 Batman", "descripcion": "Macetero Batman con suculenta artesanal y capa decorativa con logo dorado", "precio": 26000, "imagen": "fotos/batman_frente.jpg", "imagen2": "fotos/batman_detalle.jpg", "colores": [], "disponible": true },
         { "id": 13, "nombre": "🔴 Deadpool", "descripcion": "Macetero Deadpool con bonsái artesanal y espadas incluidas", "precio": 32000, "imagen": "fotos/deadpool_frente.jpg", "imagen2": "fotos/deadpool_detalle.jpg", "colores": [], "disponible": true }
       ]
     },
