@@ -67,6 +67,40 @@
           "disponible": true
         }
       ]
+    },
+    {
+      "id": "tematicos",
+      "nombre": "Maceteros Temáticos",
+      "emoji": "⚽",
+      "banner": "🔥 Regalos para el Día del Hombre 🔥",
+      "productos": [
+        {
+          "id": 14,
+          "nombre": "⚽ Macetero FC Barcelona",
+          "descripcion": "Macetero artesanal del Barça con lirio de la paz (el valor NO incluye chocolates ni tarjeta)",
+          "precio": 32000,
+          "imagen": "fotos/barcelona.jpeg",
+          "imagen2": "",
+          "colores": [],
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "adicionales": [
+        {
+          "id": "chocolates",
+          "nombre": "🍫 Chocolates",
+          "descripcion": "Selección de chocolates incluida en el arreglo",
+          "precio": 5000
+        },
+        {
+          "id": "tarjeta",
+          "nombre": "💌 Tarjeta personalizada",
+          "descripcion": "Tarjeta con mensaje especial para dedicar",
+          "precio": 1000
+        }
+      ]
     }
   ]
 }
