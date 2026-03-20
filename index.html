@@ -382,6 +382,44 @@
     .toggle-dark:hover { transform:scale(1.12) rotate(15deg); box-shadow:0 6px 24px rgba(124,58,237,.4); }
     body.dark .toggle-dark { background:#2d1b4e; border-color:#7c3aed; }
 
+
+    /* ── BANNER ESPECIAL ── */
+    .banner-especial { max-width:1100px; margin:0 auto 36px; padding:0 20px; }
+    .banner-especial-inner {
+      border-radius:24px; padding:28px 28px 24px;
+      position:relative; overflow:hidden;
+    }
+    .banner-especial-inner::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 90% 50%,rgba(253,230,138,.5) 0%,transparent 60%);
+      pointer-events:none;
+    }
+    body.dark .banner-especial-inner { background:#2d1f00 !important; border-color:#78350f !important; }
+    .banner-especial-titulo {
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(28px,5vw,42px);
+      text-align:center; margin-bottom:4px; line-height:1.2;
+    }
+    body.dark .banner-especial-titulo { color:#fde68a !important; }
+    .banner-especial-sub {
+      text-align:center; font-size:13px; font-weight:600;
+      margin-bottom:22px; letter-spacing:.5px;
+    }
+    body.dark .banner-especial-sub { color:#fcd34d !important; }
+    .banner-especial-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+      gap:14px;
+    }
+    .banner-especial-grid .tarjeta { border-color:#fde68a; }
+    body.dark .banner-especial-grid .tarjeta { background:#2d1f00; border-color:#78350f; }
+    .banner-especial-grid .precio { color:#d97706; }
+    .banner-especial-grid .btn-pedir { background:#d97706; }
+    .banner-especial-grid .btn-pedir:hover { background:#b45309; }
+    @media(max-width:480px) {
+      .banner-especial-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+    }
+
     @media (max-width:480px) {
       .grid { grid-template-columns:repeat(2,1fr); gap:10px; }
       .tarjeta-body { padding:9px 10px 11px; }
@@ -408,6 +446,7 @@
   </div>
 
   <div class="filtros" id="filtros"></div>
+  <div id="banner-especial-wrap"></div>
   <main id="catalogo"></main>
 
   <!-- POR QUÉ FLOREVAH -->
@@ -571,6 +610,50 @@ function renderizar(data) {
   document.documentElement.style.setProperty('--rosa',   negocio.color_acento);
   TEL1=negocio.telefono1; TEL2=negocio.telefono2;
   ADICIONALES_GLOBAL = data.adicionales || [];
+
+  // BANNER ESPECIAL
+  const bs = data.banner_especial;
+  const bsWrap = document.getElementById('banner-especial-wrap');
+  bsWrap.innerHTML = '';
+  if(bs && bs.activo) {
+    const todosProductos = [];
+    categorias.forEach(cat => {
+      cat.productos.forEach(prod => todosProductos.push({prod, cat}));
+    });
+    const bsProductos = todosProductos.filter(({prod}) => bs.productos_ids.includes(prod.id));
+    if(bsProductos.length) {
+      const wrap = document.createElement('div');
+      wrap.className = 'banner-especial';
+      wrap.innerHTML = `
+        <div class="banner-especial-inner" style="background:${bs.color_fondo};border:2px solid ${bs.color_borde}">
+          <div class="banner-especial-titulo" style="color:${bs.color_texto}">${bs.titulo}</div>
+          <div class="banner-especial-sub" style="color:${bs.color_texto}">${bs.subtitulo}</div>
+          <div class="banner-especial-grid" id="bs-grid"></div>
+        </div>`;
+      bsWrap.appendChild(wrap);
+      const grid = document.getElementById('bs-grid');
+      bsProductos.forEach(({prod, cat}, pi) => {
+        const card = document.createElement('div');
+        card.className = 'tarjeta';
+        card.style.animationDelay = (pi * 0.08) + 's';
+        const imgHTML = prod.imagen
+          ? `<div class="tarjeta-img-wrap"><img class="tarjeta-img" src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'tarjeta-img-placeholder\'>${cat.emoji}</div>'"></div>`
+          : `<div class="tarjeta-img-wrap"><div class="tarjeta-img-placeholder">${cat.emoji}</div></div>`;
+        const nombreEsc = prod.nombre.replace(/'/g, "\'");
+        card.innerHTML = `${imgHTML}
+          <div class="tarjeta-body">
+            <div class="tarjeta-nombre">${prod.nombre}</div>
+            <div class="tarjeta-desc">${prod.descripcion}</div>
+            <div class="tarjeta-footer">
+              <span class="precio">${formatPrecio(prod.precio)}</span>
+              <button class="btn-pedir" onclick="abrirModal('${nombreEsc}',${prod.precio})">Pedir 💬</button>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+  }
+
 
   const nums=document.getElementById('footer-nums');
   [negocio.telefono1,negocio.telefono2].filter(Boolean).forEach((tel,i)=>{
