@@ -12,12 +12,11 @@
       "id": "figuras",
       "nombre": "Colección de Figuras y Personajes",
       "emoji": "🎭",
-      "banner": "🔥 Regalos para el Día del Hombre 🔥",
       "productos": [
         {
           "id": 11,
           "nombre": "🐢 Squirtle",
-          "descripcion": "Figura artesanal de Squirtle hecha a mano, con detalle de caparazón en la espalda",
+          "descripcion": "Figura artesanal de Squirtle",
           "precio": 50000,
           "imagen": "fotos/squirtle_frente.jpg",
           "imagen2": "fotos/squirtle_detalle.jpg",
@@ -27,7 +26,7 @@
         {
           "id": 12,
           "nombre": "🦇 Batman",
-          "descripcion": "Macetero Batman con cara tejida y capa decorativa con logo dorado",
+          "descripcion": "Macetero Batman con capa decorativa y logo dorado",
           "precio": 26000,
           "imagen": "fotos/batman_frente.jpg",
           "imagen2": "fotos/batman_detalle.jpg",
