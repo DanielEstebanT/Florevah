@@ -139,9 +139,16 @@
     .chip-rosa      { background:#fce7f3; color:#9d174d; border-color:#f9a8d4; }
     .chip-rosado    { background:#fce7f3; color:#9d174d; border-color:#f9a8d4; }
     .chip-beige     { background:#fef3c7; color:#92400e; border-color:#fcd34d; }
-    .chip-verde-menta { background:#ccfbf1; color:#065f46; border-color:#5eead4; }
-    .chip-otros     { background:#f3f4f6; color:#374151; border-color:#d1d5db; }
-    .chip-default   { background:#f3f4f6; color:#374151; border-color:#d1d5db; }
+    .chip-verde-menta    { background:#ccfbf1; color:#065f46; border-color:#5eead4; }
+    .chip-menta          { background:#ccfbf1; color:#065f46; border-color:#5eead4; }
+    .chip-lila           { background:#ede9fe; color:#6d28d9; border-color:#a78bfa; }
+    .chip-azul-bebe      { background:#e0f2fe; color:#075985; border-color:#7dd3fc; }
+    .chip-gris           { background:#f1f5f9; color:#475569; border-color:#cbd5e1; }
+    .chip-amarillo-pastel{ background:#fef9c3; color:#a16207; border-color:#fde047; }
+    .chip-palo-de-rosa   { background:#fce7f3; color:#9d174d; border-color:#f9a8d4; }
+    .chip-personalizado  { background:#f5f3ff; color:#6d28d9; border-color:#c4b5fd; }
+    .chip-otros          { background:#f3f4f6; color:#374151; border-color:#d1d5db; }
+    .chip-default        { background:#f3f4f6; color:#374151; border-color:#d1d5db; }
 
     .tarjeta-footer { display:flex; align-items:center; justify-content:space-between; gap:8px; }
     .precio { font-size:16px; font-weight:800; color:var(--morado); }
@@ -348,6 +355,13 @@
     body.dark .chip-verde   { background:#0f2a1a; color:#6ee7b7; border-color:#065f46; }
     body.dark .chip-rosa, body.dark .chip-rosado { background:#3b1040; color:#f0abcf; border-color:#831843; }
     body.dark .chip-beige   { background:#2a1a00; color:#fcd34d; border-color:#78350f; }
+    body.dark .chip-lila    { background:#2e1065; color:#c4b5fd; border-color:#7c3aed; }
+    body.dark .chip-azul-bebe { background:#0c1a2e; color:#7dd3fc; border-color:#0369a1; }
+    body.dark .chip-menta, body.dark .chip-verde-menta { background:#0f2a24; color:#5eead4; border-color:#0f766e; }
+    body.dark .chip-gris    { background:#1e293b; color:#94a3b8; border-color:#475569; }
+    body.dark .chip-amarillo-pastel { background:#2d2200; color:#fde047; border-color:#a16207; }
+    body.dark .chip-palo-de-rosa { background:#3b1040; color:#f0abcf; border-color:#831843; }
+    body.dark .chip-personalizado { background:#2e1065; color:#e9d5ff; border-color:#7c3aed; }
     body.dark .chip-default, body.dark .chip-otros { background:#2d1b4e; color:#c4b5fd; border-color:#4c1d95; }
     body.dark .seccion-titulo::after { background:linear-gradient(90deg,#7c3aed,transparent); }
     body.dark .seccion-titulo h2 { color:#f0e6ff; }
@@ -522,7 +536,14 @@ const CHIP_MAP = {
   'rojo':'chip-rojo','amarillo':'chip-amarillo','morado':'chip-morado',
   'azul':'chip-azul','verde':'chip-verde','rosa':'chip-rosa',
   'rosado':'chip-rosado','beige':'chip-beige',
-  'verde menta':'chip-verde-menta','otros':'chip-otros',
+  'verde menta':'chip-verde-menta','menta':'chip-menta',
+  'lila':'chip-lila','azul bebé':'chip-azul-bebe','azul bebe':'chip-azul-bebe',
+  'gris':'chip-gris','amarillo pastel':'chip-amarillo-pastel',
+  'palo de rosa':'chip-palo-de-rosa',
+  'personalizado':'chip-personalizado',
+  'gorro de fresa':'chip-gorro','gorro de oso':'chip-gorro',
+  'gorro de sapito':'chip-gorro','gorro de zorro':'chip-gorro','gorro de gato':'chip-gorro',
+  'otros':'chip-otros',
 };
 function chipClass(c){ return CHIP_MAP[c.toLowerCase()]||'chip-default'; }
 function formatPrecio(n){ return '$'+n.toLocaleString('es-CO'); }
