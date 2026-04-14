@@ -53,7 +53,7 @@
         {
           "id": 1,
           "nombre": "Ramo rojo",
-          "descripcion": "Tulipán y lirio rojo con flores blancas, papel dorado con moño",
+          "descripcion": "Tulipán y lirio rojo con flores blancas, papel dorado (o negro) con moño",
           "precio": 35000,
           "imagen": "fotos/ramo_rojo.jpg",
           "colores": [],
@@ -62,9 +62,18 @@
         {
           "id": 2,
           "nombre": "Ramo azul",
-          "descripcion": "Lirio y tulipán azul con florecitas blancas, papel dorado y moño menta",
+          "descripcion": "Lirio y tulipán azul con florecitas blancas, papel dorado con moño",
           "precio": 35000,
           "imagen": "fotos/ramo_azul.jpg",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 3,
+          "nombre": "Ramo rosa",
+          "descripcion": "Lirio y tulipán rosa con florecitas blancas, papel dorado y moño menta",
+          "precio": 35000,
+          "imagen": "fotos/ramo_rosa.jpg",
           "colores": [],
           "disponible": true
         }
