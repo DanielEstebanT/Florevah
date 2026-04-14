@@ -198,10 +198,10 @@
         {
           "id": 15,
           "nombre": "🐣 Llavero Pollo",
-          "descripcion": "Llavero artesanal de pollito amarillo. Personalizable con diferentes gorros: 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡pídenos el tuyo!",
+          "descripcion": "Llavero artesanal de pollito amarillo. Personalizable con diferentes gorros: 🐸 de sapito, 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡pídenos el tuyo!",
           "precio": 8000,
           "imagen": "fotos/llavero_pollo.jpg",
-          "colores": ["Gorro de fresa", "Gorro de oso", "Personalizado"],
+          "colores": ["Gorro de sapito","Gorro de fresa", "Gorro de oso", "Personalizado"],
           "disponible": true
         },
         {
