@@ -189,7 +189,7 @@
         {
           "id": 15,
           "nombre": "🐣 Llavero Pollo",
-          "descripcion": "Llavero artesanal de pollito amarillo. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡pídenos el tuyo!",
+          "descripcion": "Llavero artesanal de pollito amarillo. Personalizable con diferentes gorros: 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡pídenos el tuyo!",
           "precio": 8000,
           "imagen": "fotos/llavero_pollo.jpg",
           "colores": ["Gorro de fresa", "Gorro de oso", "Personalizado"],
@@ -198,7 +198,7 @@
         {
           "id": 16,
           "nombre": "🐙 Llavero Pulpo",
-          "descripcion": "Llavero artesanal de pulpito. Completamente hecho a mano, no tejido. Disponible en varios colores pastel — ¡elige el tuyo!",
+          "descripcion": "Llavero artesanal de pulpito. Disponible en varios colores pastel — ¡elige el tuyo!",
           "precio": 5000,
           "imagen": "fotos/llavero_pulpo.jpg",
           "colores": ["Lila", "Azul bebé", "Menta", "Gris", "Amarillo pastel", "Palo de rosa"],
@@ -207,7 +207,7 @@
         {
           "id": 17,
           "nombre": "🤍 Llavero Masmelo",
-          "descripcion": "Llavero artesanal de marshmallow con gorrito. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡pídenos el tuyo!",
+          "descripcion": "Llavero artesanal de marshmallow con gorrito. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡pídenos el tuyo!",
           "precio": 6000,
           "imagen": "fotos/llavero_masmelo.jpg",
           "colores": ["Gorro de oso", "Gorro de sapito", "Gorro de zorro", "Gorro de gato", "Personalizado"],
