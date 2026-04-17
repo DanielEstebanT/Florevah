@@ -51,9 +51,27 @@
       "emoji": "💐",
       "productos": [
         {
+          "id": 18,
+          "nombre": "🎈 Arreglo con globo rojo",
+          "descripcion": "Arreglo artesanal con 4 tulipanes rojos, globo decorativo 'Feliz Día Mamá' y presentación lista para regalo. ¡También hacemos diseños personalizados!",
+          "precio": 65000,
+          "imagen": "fotos/ramo_globo_rojo.webp",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 19,
+          "nombre": "🎈 Arreglo con globo rosa",
+          "descripcion": "Arreglo artesanal con 4 tulipanes + 2 gerberas, globo decorativo 'Feliz Día Mamá' y presentación lista para regalo. ¡También hacemos diseños personalizados!",
+          "precio": 75000,
+          "imagen": "fotos/ramo_globo_rosa.webp",
+          "colores": [],
+          "disponible": true
+        },
+        {
           "id": 1,
           "nombre": "Ramo rojo",
-          "descripcion": "Tulipán y lirio rojo con flores blancas, papel dorado (o negro) con moño",
+          "descripcion": "Tulipán y lirio rojo con flores blancas, papel dorado con moño",
           "precio": 35000,
           "imagen": "fotos/ramo_rojo.jpg",
           "colores": [],
@@ -62,18 +80,9 @@
         {
           "id": 2,
           "nombre": "Ramo azul",
-          "descripcion": "Lirio y tulipán azul con florecitas blancas, papel dorado con moño",
+          "descripcion": "Lirio y tulipán azul con florecitas blancas, papel dorado y moño menta",
           "precio": 35000,
           "imagen": "fotos/ramo_azul.jpg",
-          "colores": [],
-          "disponible": true
-        },
-        {
-          "id": 3,
-          "nombre": "Ramo rosa",
-          "descripcion": "Lirio y tulipán rosa con florecitas blancas, papel dorado y moño menta",
-          "precio": 35000,
-          "imagen": "fotos/ramo_rosa.jpg",
           "colores": [],
           "disponible": true
         }
@@ -126,7 +135,7 @@
           "nombre": "Macetero 4 corazones",
           "descripcion": "Macetero con carita feliz y 4 corazones — más grande",
           "precio": 20000,
-          "imagen": "fotos/macetero4_corazones.png",
+          "imagen": "fotos/mac_corazones.jpg",
           "colores": [
             "Amarillo"
           ],
@@ -138,6 +147,7 @@
           "descripcion": "Macetero especial con corazones rojos y letrero 'love'",
           "precio": 25000,
           "imagen": "fotos/mac_love.jpg",
+          "imagen2": "fotos/mac_love2.jpg",
           "colores": [
             "Rojo"
           ],
@@ -197,17 +207,16 @@
         {
           "id": 15,
           "nombre": "🐣 Llavero Pollo",
-          "descripcion": "Llavero artesanal de pollito amarillo. Personalizable con diferentes gorros: 🐸 de sapito, 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡pídenos el tuyo!",
+          "descripcion": "Llavero artesanal de pollito amarillo. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡pídenos el tuyo!",
           "precio": 8000,
           "imagen": "fotos/llavero_pollo.jpg",
-          "imagen2": "fotos/llavero_pollo_b.jpg",
-          "colores": ["Gorro de sapito","Gorro de fresa", "Gorro de oso", "Personalizado"],
+          "colores": ["Gorro de fresa", "Gorro de oso", "Personalizado"],
           "disponible": true
         },
         {
           "id": 16,
           "nombre": "🐙 Llavero Pulpo",
-          "descripcion": "Llavero artesanal de pulpito. Disponible en varios colores pastel — ¡elige el tuyo!",
+          "descripcion": "Llavero artesanal de pulpito. Completamente hecho a mano, no tejido. Disponible en varios colores pastel — ¡elige el tuyo!",
           "precio": 5000,
           "imagen": "fotos/llavero_pulpo.jpg",
           "colores": ["Lila", "Azul bebé", "Menta", "Gris", "Amarillo pastel", "Palo de rosa"],
@@ -216,7 +225,7 @@
         {
           "id": 17,
           "nombre": "🤍 Llavero Masmelo",
-          "descripcion": "Llavero artesanal de marshmallow con gorrito. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡pídenos el tuyo!",
+          "descripcion": "Llavero artesanal de marshmallow con gorrito. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡pídenos el tuyo!",
           "precio": 6000,
           "imagen": "fotos/llavero_masmelo.jpg",
           "colores": ["Gorro de oso", "Gorro de sapito", "Gorro de zorro", "Gorro de gato", "Personalizado"],
@@ -257,18 +266,12 @@
     }
   ],
   "banner_especial": {
-    "activo": false,
-    "titulo": "🌼 Regalos para el Día de las Flores Amarillas 🌼",
-    "subtitulo": "Detalles únicos en amarillo para ese día especial. Pregunta también por ramos o más flores en color amarillo.",
-    "color_fondo": "#fef9c3",
-    "color_borde": "#fde68a",
-    "color_texto": "#78350f",
-    "productos_ids": [
-      3,
-      4,
-      6,
-      8,
-      10
-    ]
+    "activo": true,
+    "titulo": "🌸 Regalos Especiales para el Día de la Madre 🌸",
+    "subtitulo": "Detalles únicos, elegantes y artesanales para sorprender a mamá. ¡También hacemos diseños personalizados según colores o estilo que quieras!",
+    "color_fondo": "#fdf2f8",
+    "color_borde": "#f9a8d4",
+    "color_texto": "#831843",
+    "productos_ids": [18, 19, 1, 2, 5, 6, 7, 15, 16, 17]
   }
 }
