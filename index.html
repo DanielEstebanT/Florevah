@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florevah — Catálogo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rosa:   #f9a8d4;
+      --morado: #7c3aed;
+      --lila:   #c084fc;
+      --crema:  #fff8f5;
+      --texto:  #3b1f5e;
+      --gris:   #9ca3af;
+      --sombra: rgba(124,58,237,0.1);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Nunito',sans-serif; background:var(--crema); color:var(--texto); min-height:100vh; }
+    body::before {
+      content:''; position:fixed; inset:0;
+      background:
+        radial-gradient(ellipse at 8% 8%,rgba(249,168,212,.22) 0%,transparent 45%),
+        radial-gradient(ellipse at 92% 92%,rgba(192,132,252,.18) 0%,transparent 45%),
+        radial-gradient(ellipse at 92% 8%,rgba(167,243,208,.15) 0%,transparent 40%);
+      pointer-events:none; z-index:0;
+    }
+    .contenido { position:relative; z-index:1; }
+
+    /* HEADER */
+    header { text-align:center; padding:44px 20px 28px; }
+    header::after {
+      content:''; display:block; width:140px; height:2px;
+      background:linear-gradient(90deg,transparent,var(--lila),var(--rosa),var(--lila),transparent);
+      margin:18px auto 0; border-radius:2px;
+    }
+    .logo-img {
+      width:96px; height:96px; border-radius:50%;
+      border:3px solid var(--rosa); object-fit:cover;
+      margin:0 auto 14px; display:block;
+      box-shadow:0 4px 20px rgba(249,168,212,.4);
+    }
+    .logo-placeholder {
+      width:96px; height:96px; border-radius:50%;
+      border:3px solid var(--rosa);
+      background:linear-gradient(135deg,#fce7f3,#ede9fe);
+      display:flex; align-items:center; justify-content:center;
+      font-size:38px; margin:0 auto 14px;
+    }
+    h1.marca {
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(54px,10vw,82px);
+      color:var(--morado); line-height:1;
+      text-shadow:2px 3px 0 rgba(249,168,212,.35);
+    }
+    .slogan { font-size:12px; letter-spacing:3.5px; text-transform:uppercase; color:var(--lila); margin-top:6px; font-weight:700; }
+
+    /* BANNER INTRO */
+    .banner-intro {
+      max-width:680px; margin:0 auto 10px;
+      padding:14px 28px; text-align:center;
+      font-size:14px; font-weight:700; color:#6d28d9;
+      background:linear-gradient(135deg,rgba(253,232,243,.8),rgba(237,233,254,.8));
+      border:1.5px solid rgba(249,168,212,.5); border-radius:40px;
+      letter-spacing:.3px; line-height:1.5;
+    }
+    .banner-flor { color:var(--rosa); margin:0 6px; font-size:16px; }
+
+    /* FILTROS */
+    .filtros { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:8px 20px 28px; }
+    .filtro-btn {
+      background:white; border:2px solid var(--rosa); border-radius:30px;
+      padding:7px 18px; font-family:'Nunito',sans-serif; font-size:13px; font-weight:700;
+      color:var(--texto); cursor:pointer; transition:all .22s ease;
+    }
+    .filtro-btn:hover,.filtro-btn.activo {
+      background:var(--morado); border-color:var(--morado); color:white;
+      transform:translateY(-2px); box-shadow:0 5px 18px rgba(124,58,237,.22);
+    }
+
+    /* SECCIONES */
+    .seccion { max-width:1100px; margin:0 auto 48px; padding:0 20px; }
+    .seccion-titulo { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+    .seccion-titulo h2 { font-size:20px; font-weight:800; }
+    .seccion-titulo .emoji { font-size:24px; }
+    .seccion-titulo::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--rosa),transparent); }
+
+    /* BANNER DE SECCIÓN (ej: día del hombre) */
+    .seccion-banner {
+      display:inline-block;
+      background:linear-gradient(135deg,#1a0a0a,#3d0000);
+      color:#ff6b6b; font-size:14px; font-weight:800;
+      padding:8px 20px; border-radius:30px;
+      border:1.5px solid #ff4444;
+      margin-bottom:18px;
+      letter-spacing:.5px;
+    }
+
+    /* GRID */
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:18px; }
+
+    /* TARJETA NORMAL */
+    .tarjeta {
+      background:white; border-radius:18px; overflow:hidden;
+      border:1.5px solid rgba(249,168,212,.35);
+      box-shadow:0 4px 18px var(--sombra);
+      transition:transform .28s ease,box-shadow .28s ease;
+      animation:aparecer .45s ease both;
+    }
+    @keyframes aparecer { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+    .tarjeta:hover { transform:translateY(-5px); box-shadow:0 14px 36px rgba(124,58,237,.16); }
+    .tarjeta.agotado { opacity:.58; }
+
+    .tarjeta-img-wrap {
+      position:relative; width:100%; aspect-ratio:1/1;
+      overflow:hidden; background:linear-gradient(135deg,#fce7f3,#ede9fe);
+    }
+    .tarjeta-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease; }
+    .tarjeta:hover .tarjeta-img { transform:scale(1.04); }
+    .tarjeta-img[src*="ramo_rosa"] { object-position: center 60%; }
+    .tarjeta-img-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:56px; }
+    .badge-agotado {
+      position:absolute; top:10px; right:10px;
+      background:rgba(0,0,0,.55); color:white;
+      font-size:10px; font-weight:800; padding:3px 9px; border-radius:20px;
+    }
+
+    .tarjeta-body { padding:13px 14px 15px; }
+    .tarjeta-nombre { font-size:14px; font-weight:800; color:var(--texto); margin-bottom:4px; }
+    .tarjeta-desc { font-size:12px; color:var(--gris); line-height:1.4; margin-bottom:10px; }
+
+    /* CHIPS */
+    .colores-wrap { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:11px; }
+    .color-chip { font-size:11px; font-weight:700; padding:2px 9px; border-radius:20px; border:1.5px solid; }
+    .chip-rojo      { background:#fee2e2; color:#991b1b; border-color:#fca5a5; }
+    .chip-amarillo  { background:#fef9c3; color:#78350f; border-color:#fde68a; }
+    .chip-morado    { background:#ede9fe; color:#5b21b6; border-color:#c4b5fd; }
+    .chip-azul      { background:#dbeafe; color:#1e40af; border-color:#93c5fd; }
+    .chip-verde     { background:#d1fae5; color:#065f46; border-color:#6ee7b7; }
+    .chip-rosa      { background:#fce7f3; color:#9d174d; border-color:#f9a8d4; }
+    .chip-rosado    { background:#fce7f3; color:#9d174d; border-color:#f9a8d4; }
+    .chip-beige     { background:#fef3c7; color:#92400e; border-color:#fcd34d; }
+    .chip-verde-menta    { background:#ccfbf1; color:#065f46; border-color:#5eead4; }
+    .chip-menta          { background:#ccfbf1; color:#065f46; border-color:#5eead4; }
+    .chip-lila           { background:#ede9fe; color:#6d28d9; border-color:#a78bfa; }
+    .chip-azul-bebe      { background:#e0f2fe; color:#075985; border-color:#7dd3fc; }
+    .chip-gris           { background:#f1f5f9; color:#475569; border-color:#cbd5e1; }
+    .chip-amarillo-pastel{ background:#fef9c3; color:#a16207; border-color:#fde047; }
+    .chip-palo-de-rosa   { background:#fce7f3; color:#9d174d; border-color:#f9a8d4; }
+    .chip-personalizado  { background:#f5f3ff; color:#6d28d9; border-color:#c4b5fd; }
+    .chip-otros          { background:#f3f4f6; color:#374151; border-color:#d1d5db; }
+    .chip-default        { background:#f3f4f6; color:#374151; border-color:#d1d5db; }
+
+    .tarjeta-footer { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+    .precio { font-size:16px; font-weight:800; color:var(--morado); }
+    .btn-pedir {
+      background:var(--morado); color:white; border:none; border-radius:20px;
+      padding:6px 14px; font-family:'Nunito',sans-serif; font-size:12px; font-weight:700;
+      cursor:pointer; transition:background .2s,transform .2s; white-space:nowrap;
+    }
+    .btn-pedir:hover { background:#6d28d9; transform:scale(1.05); }
+
+    /* ── FLIP CARD para figuras ── */
+    .flip-wrap {
+      width:100%; aspect-ratio:1/1;
+      perspective:1000px;
+      cursor:pointer;
+      position:relative;
+      touch-action:none;
+    }
+    /* mobile touch flip */
+    .flip-wrap.flipped .flip-inner { transform:rotateY(180deg); }
+    .flip-wrap.flipped .flip-hint { opacity:0; }
+    .flip-inner {
+      width:100%; height:100%;
+      position:relative;
+      transform-style:preserve-3d;
+      transition:transform .55s cubic-bezier(.4,0,.2,1);
+    }
+    .flip-wrap:hover .flip-inner {
+      transform:rotateY(180deg);
+    }
+    .flip-front, .flip-back {
+      position:absolute; inset:0;
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+    }
+    .flip-back { transform:rotateY(180deg); }
+    .flip-front img, .flip-back img {
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+    /* Hint "toca para ver" */
+    .flip-hint {
+      position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
+      background:rgba(0,0,0,.55); color:white;
+      font-size:10px; font-weight:700; padding:3px 10px;
+      border-radius:20px; white-space:nowrap;
+      pointer-events:none;
+      transition:opacity .3s;
+    }
+    .flip-wrap:hover .flip-hint { opacity:0; }
+
+    /* Botón ver detalle en flip cards */
+    .flip-detalle-btn {
+      position:absolute; top:10px; left:10px; z-index:10;
+      background:rgba(0,0,0,.45); border:none; border-radius:20px;
+      color:white; font-size:11px; font-weight:700;
+      padding:5px 10px; cursor:pointer; backdrop-filter:blur(4px);
+      transition:background .2s;
+    }
+    .flip-detalle-btn:hover { background:rgba(124,58,237,.75); }
+
+    /* Tarjeta especial figuras — borde más oscuro */
+    .tarjeta-figura {
+      border-color:rgba(100,60,200,.3);
+      box-shadow:0 4px 20px rgba(100,60,200,.15);
+    }
+    .tarjeta-figura .precio { color:#dc2626; }
+    .tarjeta-figura .btn-pedir { background:#dc2626; }
+    .tarjeta-figura .btn-pedir:hover { background:#b91c1c; }
+
+    /* ── MODAL DETALLE PRODUCTO ── */
+    .modal-detalle-overlay {
+      display:none; position:fixed; inset:0; z-index:200;
+      background:rgba(20,5,40,.7); backdrop-filter:blur(6px);
+      align-items:center; justify-content:center; padding:16px;
+    }
+    .modal-detalle-overlay.abierto { display:flex; }
+    .modal-detalle {
+      background:white; border-radius:24px;
+      width:100%; max-width:420px; max-height:90vh;
+      overflow-y:auto; position:relative;
+      box-shadow:0 24px 70px rgba(124,58,237,.35);
+      animation:popIn .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    body.dark .modal-detalle { background:#1a0a2e; }
+    .modal-detalle-img {
+      width:100%; aspect-ratio:1/1; object-fit:cover;
+      border-radius:24px 24px 0 0; display:block;
+    }
+    .modal-detalle-img[src*="ramo_rosa"] { object-position: center 60%; }
+    .modal-detalle-cerrar {
+      position:absolute; top:12px; right:12px;
+      background:rgba(0,0,0,.45); border:none; border-radius:50%;
+      width:34px; height:34px; font-size:16px; cursor:pointer;
+      color:white; display:flex; align-items:center; justify-content:center;
+      transition:background .2s;
+    }
+    .modal-detalle-cerrar:hover { background:rgba(0,0,0,.7); }
+    .modal-detalle-body { padding:20px 22px 24px; }
+    .modal-detalle-nombre {
+      font-size:18px; font-weight:800; color:var(--texto); margin-bottom:6px;
+    }
+    body.dark .modal-detalle-nombre { color:#f0e6ff; }
+    .modal-detalle-desc {
+      font-size:13px; color:var(--gris); line-height:1.55; margin-bottom:12px;
+    }
+    .modal-detalle-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+    .modal-detalle-label {
+      font-size:11px; font-weight:800; letter-spacing:1px;
+      text-transform:uppercase; color:var(--lila); margin-bottom:8px;
+    }
+    .modal-detalle-footer {
+      display:flex; align-items:center; justify-content:space-between;
+      margin-top:4px;
+    }
+    .modal-detalle-precio { font-size:22px; font-weight:800; color:var(--morado); }
+
+    /* ── MODAL CANAL ── */
+    .modal-overlay {
+      display:none; position:fixed; inset:0; z-index:100;
+      background:rgba(30,10,60,.45); backdrop-filter:blur(4px);
+      align-items:center; justify-content:center;
+    }
+    .modal-overlay.abierto { display:flex; }
+    .modal {
+      background:white; border-radius:24px; padding:32px 28px 28px;
+      width:90%; max-width:360px;
+      box-shadow:0 20px 60px rgba(124,58,237,.25);
+      animation:popIn .3s cubic-bezier(.34,1.56,.64,1); position:relative;
+    }
+    @keyframes popIn { from{opacity:0;transform:scale(.85)} to{opacity:1;transform:scale(1)} }
+    .modal-cerrar { position:absolute; top:14px; right:16px; background:none; border:none; font-size:20px; cursor:pointer; color:var(--gris); }
+    .modal-cerrar:hover { color:var(--texto); }
+
+    /* ADICIONALES EN MODAL */
+    .adicionales-wrap {
+      background: #faf5ff;
+      border: 1.5px solid #ede9fe;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    body.dark .adicionales-wrap { background:#2d1b4e; border-color:#4c1d95; }
+    .adicionales-titulo {
+      font-size: 13px; font-weight: 800;
+      color: var(--morado); margin-bottom: 10px;
+    }
+    .adicional-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(192,132,252,.15);
+      cursor: pointer;
+    }
+    .adicional-item:last-child { border-bottom: none; }
+    .adicional-check {
+      width: 20px; height: 20px; border-radius: 6px;
+      border: 2px solid var(--lila);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .2s;
+      background: white;
+      font-size: 12px;
+    }
+    body.dark .adicional-check { background: #1e1040; }
+    .adicional-item.seleccionado .adicional-check {
+      background: var(--morado); border-color: var(--morado); color: white;
+    }
+    .adicional-info { flex: 1; }
+    .adicional-nombre { font-size: 13px; font-weight: 700; color: var(--texto); }
+    body.dark .adicional-nombre { color: #f0e6ff; }
+    .adicional-desc { font-size: 11px; color: var(--gris); }
+    .adicional-precio {
+      font-size: 13px; font-weight: 800; color: var(--morado);
+      white-space: nowrap;
+    }
+    .modal-total {
+      margin-top: 12px; padding-top: 10px;
+      border-top: 1.5px solid rgba(192,132,252,.25);
+      font-size: 15px; font-weight: 800;
+      color: var(--texto); text-align: right;
+    }
+    body.dark .modal-total { color: #f0e6ff; }
+    .modal-total span { color: var(--morado); font-size: 18px; }
+
+    .modal-titulo { font-family:'Great Vibes',cursive; font-size:32px; color:var(--morado); text-align:center; margin-bottom:4px; }
+    .modal-sub { text-align:center; font-size:12px; color:var(--gris); font-weight:600; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+    .modal-producto { text-align:center; font-size:14px; font-weight:800; color:var(--texto); margin-bottom:20px; padding:8px 14px; background:#faf5ff; border-radius:12px; border:1px solid #ede9fe; }
+    .modal-label { font-size:13px; font-weight:700; color:var(--lila); text-align:center; margin-bottom:14px; }
+    .canal-btn {
+      display:flex; align-items:center; gap:14px; width:100%;
+      padding:14px 18px; margin-bottom:10px;
+      background:linear-gradient(135deg,#fce7f3,#ede9fe);
+      border:2px solid transparent; border-radius:16px;
+      cursor:pointer; transition:all .2s ease; text-decoration:none;
+    }
+    .canal-btn:hover { border-color:var(--morado); transform:translateY(-2px); box-shadow:0 6px 20px rgba(124,58,237,.18); }
+    .canal-icon { font-size:28px; flex-shrink:0; }
+    .canal-info { text-align:left; }
+    .canal-nombre { font-size:13px; font-weight:800; color:var(--morado); }
+    .canal-num { font-size:15px; font-weight:800; color:var(--texto); }
+
+    /* POR QUÉ FLOREVAH */
+    .porque-section { background:linear-gradient(135deg,#fce7f3,#ede9fe); padding:52px 20px 56px; margin-top:20px; }
+    .porque-inner { max-width:900px; margin:0 auto; text-align:center; }
+    .porque-titulo { font-size:clamp(22px,5vw,32px); font-weight:800; color:var(--texto); margin-bottom:12px; }
+    .porque-titulo span { font-family:'Great Vibes',cursive; font-size:clamp(30px,6vw,44px); color:var(--morado); }
+    .porque-frase { font-size:15px; color:#6d28d9; font-style:italic; font-weight:600; margin-bottom:36px; padding:0 20px; line-height:1.6; }
+    .porque-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
+    .porque-card { background:white; border-radius:20px; padding:28px 22px; border:1.5px solid rgba(249,168,212,.4); box-shadow:0 4px 18px rgba(124,58,237,.08); transition:transform .25s,box-shadow .25s; }
+    .porque-card:hover { transform:translateY(-5px); box-shadow:0 12px 32px rgba(124,58,237,.15); }
+    .porque-icon { font-size:36px; margin-bottom:12px; }
+    .porque-card-title { font-size:16px; font-weight:800; color:var(--morado); margin-bottom:8px; }
+    .porque-card-desc { font-size:13px; color:var(--gris); line-height:1.5; }
+
+    /* FOOTER */
+    footer { background:white; border-top:2px solid rgba(249,168,212,.35); text-align:center; padding:30px 20px; margin-top:10px; }
+    .footer-marca { font-family:'Great Vibes',cursive; font-size:36px; color:var(--morado); margin-bottom:6px; }
+    .footer-label { font-size:13px; font-weight:700; color:var(--lila); letter-spacing:1px; margin-bottom:12px; }
+    .footer-nums { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .footer-nums a {
+      display:flex; align-items:center; gap:6px;
+      background:linear-gradient(135deg,#fce7f3,#ede9fe);
+      color:var(--morado); font-weight:800; font-size:15px;
+      padding:9px 22px; border-radius:30px; text-decoration:none;
+      transition:transform .2s,box-shadow .2s;
+      box-shadow:0 2px 10px rgba(124,58,237,.12);
+    }
+    .footer-nums a:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(124,58,237,.2); }
+
+
+    /* ── MODO NOCTURNO ── */
+    body.dark {
+      --rosa:   #c0608a;
+      --morado: #c084fc;
+      --lila:   #a855f7;
+      --crema:  #1a0f2e;
+      --texto:  #f0e6ff;
+      --gris:   #8b7aaa;
+      --sombra: rgba(192,132,252,0.15);
+      background:#1a0f2e; color:#f0e6ff;
+    }
+    body.dark::before {
+      background:
+        radial-gradient(ellipse at 8% 8%,rgba(124,58,237,.28) 0%,transparent 50%),
+        radial-gradient(ellipse at 92% 92%,rgba(88,28,135,.32) 0%,transparent 50%),
+        radial-gradient(ellipse at 92% 8%,rgba(167,139,250,.14) 0%,transparent 40%);
+    }
+    body.dark .banner-intro { background:linear-gradient(135deg,rgba(88,28,135,.5),rgba(59,7,100,.6)); border-color:rgba(192,132,252,.35); color:#e9d5ff; }
+    body.dark .banner-flor { color:#c084fc; }
+    body.dark .filtro-btn { background:#2d1b4e; border-color:#7c3aed; color:#e9d5ff; }
+    body.dark .filtro-btn:hover, body.dark .filtro-btn.activo { background:#7c3aed; color:white; }
+    body.dark .tarjeta { background:#241545; border-color:rgba(167,139,250,.22); }
+    body.dark .tarjeta-nombre { color:#f0e6ff; }
+    body.dark .tarjeta-img-wrap, body.dark .tarjeta-img-placeholder { background:linear-gradient(135deg,#3b1f5e,#1e1040); }
+    body.dark .precio { color:#c084fc; }
+    body.dark .btn-pedir { background:#7c3aed; }
+    body.dark .tarjeta-figura .precio { color:#f87171; }
+    body.dark .tarjeta-figura .btn-pedir { background:#dc2626; }
+    body.dark .chip-rojo    { background:#3b0f0f; color:#fca5a5; border-color:#7f1d1d; }
+    body.dark .chip-amarillo{ background:#2d1f00; color:#fde68a; border-color:#78350f; }
+    body.dark .chip-morado  { background:#2e1065; color:#e9d5ff; border-color:#7c3aed; }
+    body.dark .chip-azul    { background:#0f172a; color:#93c5fd; border-color:#1e3a5f; }
+    body.dark .chip-verde   { background:#0f2a1a; color:#6ee7b7; border-color:#065f46; }
+    body.dark .chip-rosa, body.dark .chip-rosado { background:#3b1040; color:#f0abcf; border-color:#831843; }
+    body.dark .chip-beige   { background:#2a1a00; color:#fcd34d; border-color:#78350f; }
+    body.dark .chip-lila    { background:#2e1065; color:#c4b5fd; border-color:#7c3aed; }
+    body.dark .chip-azul-bebe { background:#0c1a2e; color:#7dd3fc; border-color:#0369a1; }
+    body.dark .chip-menta, body.dark .chip-verde-menta { background:#0f2a24; color:#5eead4; border-color:#0f766e; }
+    body.dark .chip-gris    { background:#1e293b; color:#94a3b8; border-color:#475569; }
+    body.dark .chip-amarillo-pastel { background:#2d2200; color:#fde047; border-color:#a16207; }
+    body.dark .chip-palo-de-rosa { background:#3b1040; color:#f0abcf; border-color:#831843; }
+    body.dark .chip-personalizado { background:#2e1065; color:#e9d5ff; border-color:#7c3aed; }
+    body.dark .chip-default, body.dark .chip-otros { background:#2d1b4e; color:#c4b5fd; border-color:#4c1d95; }
+    body.dark .seccion-titulo::after { background:linear-gradient(90deg,#7c3aed,transparent); }
+    body.dark .seccion-titulo h2 { color:#f0e6ff; }
+    body.dark .porque-section { background:linear-gradient(135deg,#1e0a2e,#2d0f4e); }
+    body.dark .porque-card { background:#241545; border-color:rgba(167,139,250,.2); }
+    body.dark .porque-card-desc { color:#9d8fc0; }
+    body.dark .porque-frase { color:#c084fc; }
+    body.dark footer { background:#1e1040; border-color:rgba(167,139,250,.2); }
+    body.dark .footer-marca { color:#c084fc; }
+    body.dark .footer-nums a { background:linear-gradient(135deg,#2d1b4e,#1e0a2e); color:#c084fc; }
+    body.dark .modal { background:#1e1040; }
+    body.dark .modal-titulo { color:#c084fc; }
+    body.dark .modal-sub { color:#8b7aaa; }
+    body.dark .modal-producto { background:#2d1b4e; border-color:#4c1d95; color:#f0e6ff; }
+    body.dark .modal-label { color:#a855f7; }
+    body.dark .canal-btn { background:linear-gradient(135deg,#2d1b4e,#1e0a2e); }
+    body.dark .canal-btn:hover { border-color:#a855f7; }
+    body.dark .canal-nombre { color:#c084fc; }
+    body.dark .canal-num { color:#f0e6ff; }
+    body.dark .modal-cerrar { color:#8b7aaa; }
+
+    /* Botón toggle modo nocturno */
+    .toggle-dark {
+      position:fixed; bottom:24px; right:24px; z-index:50;
+      width:50px; height:50px; border-radius:50%;
+      border:2px solid var(--rosa); background:white;
+      font-size:22px; cursor:pointer;
+      box-shadow:0 4px 20px rgba(124,58,237,.25);
+      transition:all .3s ease;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .toggle-dark:hover { transform:scale(1.12) rotate(15deg); box-shadow:0 6px 24px rgba(124,58,237,.4); }
+    body.dark .toggle-dark { background:#2d1b4e; border-color:#7c3aed; }
+
+
+    /* ── BANNER ESPECIAL ── */
+    .banner-especial { max-width:1100px; margin:0 auto 36px; padding:0 20px; }
+    .banner-especial-inner {
+      border-radius:24px; padding:28px 28px 24px;
+      position:relative; overflow:hidden;
+    }
+    .banner-especial-inner::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 90% 50%,rgba(253,230,138,.5) 0%,transparent 60%);
+      pointer-events:none;
+    }
+    body.dark .banner-especial-inner { background:#2d1f00 !important; border-color:#78350f !important; }
+    .banner-especial-titulo {
+      font-family:'Great Vibes',cursive;
+      font-size:clamp(28px,5vw,42px);
+      text-align:center; margin-bottom:4px; line-height:1.2;
+    }
+    body.dark .banner-especial-titulo { color:#fde68a !important; }
+    .banner-especial-sub {
+      text-align:center; font-size:13px; font-weight:600;
+      margin-bottom:22px; letter-spacing:.5px;
+    }
+    body.dark .banner-especial-sub { color:#fcd34d !important; }
+    .banner-especial-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+      gap:14px;
+    }
+    .banner-especial-grid .tarjeta { border-color:#fde68a; }
+    body.dark .banner-especial-grid .tarjeta { background:#2d1f00; border-color:#78350f; }
+    .banner-especial-grid .precio { color:#d97706; }
+    .banner-especial-grid .btn-pedir { background:#d97706; }
+    .banner-especial-grid .btn-pedir:hover { background:#b45309; }
+    @media(max-width:480px) {
+      .banner-especial-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+    }
+
+    @media (max-width:480px) {
+      .grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+      .tarjeta-body { padding:9px 10px 11px; }
+      .tarjeta-nombre { font-size:12px; }
+      .precio { font-size:14px; }
+      .btn-pedir { padding:5px 10px; font-size:11px; }
+    }
+  </style>
+</head>
+<body>
+<div class="contenido">
+  <header>
+    <img class="logo-img" id="logo-wrap" src="fotos/logo.png" alt="Florevah"
+         onerror="this.outerHTML='<div class=\'logo-placeholder\'></div>'">
+    <h1 class="marca" id="marca-nombre">Florevah</h1>
+    <p class="slogan" id="marca-slogan">flores artesanales</p>
+  </header>
+
+  <!-- BANNER INTRO -->
+  <div class="banner-intro">
+    <span class="banner-flor">✿</span>
+    Cada pieza es hecha a mano con técnica artesanal, diseñada para ser el detalle perfecto.
+    <span class="banner-flor">✿</span>
+  </div>
+
+  <div class="filtros" id="filtros"></div>
+  <div id="banner-especial-wrap"></div>
+  <main id="catalogo"></main>
+
+  <!-- POR QUÉ FLOREVAH -->
+  <section class="porque-section">
+    <div class="porque-inner">
+      <h2 class="porque-titulo">¿Por qué elegir <span>Florevah</span>?</h2>
+      <p class="porque-frase">"Creamos arte que se puede tocar y que decora tus espacios para siempre."</p>
+      <div class="porque-grid">
+        <div class="porque-card">
+          <div class="porque-icon">🌸</div>
+          <div class="porque-card-title">100% Artesanal</div>
+          <div class="porque-card-desc">Cada flor lleva horas de dedicación manual.</div>
+        </div>
+        <div class="porque-card">
+          <div class="porque-icon">💧</div>
+          <div class="porque-card-title">Cero Mantenimiento</div>
+          <div class="porque-card-desc">No necesitan agua ni luz solar. Siempre lucen impecables.</div>
+        </div>
+        <div class="porque-card">
+          <div class="porque-icon">🎀</div>
+          <div class="porque-card-title">Listo para Entregar</div>
+          <div class="porque-card-desc">Todas nuestras flores vienen con su soporte rígido decorativo y lazo de gala.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-marca" id="footer-marca">Florevah</div>
+    <p class="footer-label">📱 Pedidos y catálogo</p>
+    <div class="footer-nums" id="footer-nums"></div>
+  </footer>
+</div>
+
+<!-- BOTÓN MODO NOCTURNO -->
+<button class="toggle-dark" id="toggle-dark" title="Modo nocturno" onclick="toggleDark()">🌙</button>
+
+<!-- MODAL DETALLE PRODUCTO -->
+<div class="modal-detalle-overlay" id="modal-detalle-overlay" onclick="cerrarDetalle(event)">
+  <div class="modal-detalle">
+    <button class="modal-detalle-cerrar" onclick="cerrarDetalle()">✕</button>
+    <img class="modal-detalle-img" id="modal-detalle-img" src="" alt="">
+    <div class="modal-detalle-body">
+      <div class="modal-detalle-nombre" id="modal-detalle-nombre"></div>
+      <div class="modal-detalle-desc" id="modal-detalle-desc"></div>
+      <div id="modal-detalle-colores-wrap" style="display:none">
+        <div class="modal-detalle-label" id="modal-detalle-colores-label"></div>
+        <div class="modal-detalle-chips" id="modal-detalle-chips"></div>
+      </div>
+      <div class="modal-detalle-footer">
+        <span class="modal-detalle-precio" id="modal-detalle-precio"></span>
+        <button class="btn-pedir" id="modal-detalle-btn" onclick="">Pedir 💬</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CANAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="cerrarModal(event)">
+  <div class="modal">
+    <button class="modal-cerrar" onclick="cerrarModal()">✕</button>
+    <div class="modal-titulo">Florevah</div>
+    <div class="modal-sub">✿ flores artesanales ✿</div>
+    <div class="modal-producto" id="modal-producto-nombre"></div>
+
+    <!-- ADICIONALES -->
+    <div class="adicionales-wrap" id="adicionales-wrap">
+      <div class="adicionales-titulo">¿Deseas agregar algo? 🎁</div>
+      <div id="adicionales-lista"></div>
+      <div class="modal-total" id="modal-total"></div>
+    </div>
+
+    <div class="modal-label">¿Por cuál canal nos escribes?</div>
+    <a class="canal-btn" id="canal-1" href="#" target="_blank">
+      <span class="canal-icon">💬</span>
+      <div class="canal-info">
+        <div class="canal-nombre">Canal de atención 1</div>
+        <div class="canal-num" id="num-canal-1"></div>
+      </div>
+    </a>
+    <a class="canal-btn" id="canal-2" href="#" target="_blank">
+      <span class="canal-icon">💬</span>
+      <div class="canal-info">
+        <div class="canal-nombre">Canal de atención 2</div>
+        <div class="canal-num" id="num-canal-2"></div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<script>
+const CHIP_MAP = {
+  'rojo':'chip-rojo','amarillo':'chip-amarillo','morado':'chip-morado',
+  'azul':'chip-azul','verde':'chip-verde','rosa':'chip-rosa',
+  'rosado':'chip-rosado','beige':'chip-beige',
+  'verde menta':'chip-verde-menta','menta':'chip-menta',
+  'lila':'chip-lila','azul bebé':'chip-azul-bebe','azul bebe':'chip-azul-bebe',
+  'gris':'chip-gris','amarillo pastel':'chip-amarillo-pastel',
+  'palo de rosa':'chip-palo-de-rosa',
+  'personalizado':'chip-personalizado',
+  'gorro de fresa':'chip-gorro','gorro de oso':'chip-gorro',
+  'gorro de sapito':'chip-gorro','gorro de zorro':'chip-gorro','gorro de gato':'chip-gorro',
+  'otros':'chip-otros',
+};
+function chipClass(c){ return CHIP_MAP[c.toLowerCase()]||'chip-default'; }
+function formatPrecio(n){ return '$'+n.toLocaleString('es-CO'); }
+let TEL1='', TEL2='';
+
+// MODAL
+let ADICIONALES_GLOBAL = [];
+let precioBase = 0;
+let nombreProducto = '';
+
+function abrirModal(nombre, precio) {
+  precioBase = precio;
+  nombreProducto = nombre;
+  document.getElementById('modal-producto-nombre').textContent = `${nombre} — ${formatPrecio(precio)}`;
+  document.getElementById('num-canal-1').textContent = TEL1;
+  document.getElementById('num-canal-2').textContent = TEL2;
+
+  // Renderizar adicionales
+  const lista = document.getElementById('adicionales-lista');
+  lista.innerHTML = '';
+  ADICIONALES_GLOBAL.forEach(ad => {
+    const item = document.createElement('div');
+    item.className = 'adicional-item';
+    item.dataset.id = ad.id;
+    item.dataset.precio = ad.precio;
+    item.innerHTML = `
+      <div class="adicional-check">✓</div>
+      <div class="adicional-info">
+        <div class="adicional-nombre">${ad.nombre}</div>
+        <div class="adicional-desc">${ad.descripcion}</div>
+      </div>
+      <div class="adicional-precio">+${formatPrecio(ad.precio)}</div>`;
+    item.onclick = () => {
+      item.classList.toggle('seleccionado');
+      actualizarTotal();
+    };
+    lista.appendChild(item);
+  });
+
+  actualizarTotal();
+  document.getElementById('modal-overlay').classList.add('abierto');
+}
+
+function actualizarTotal() {
+  const seleccionados = document.querySelectorAll('.adicional-item.seleccionado');
+  let extra = 0;
+  let extras = [];
+  seleccionados.forEach(el => {
+    extra += parseInt(el.dataset.precio);
+    extras.push(el.querySelector('.adicional-nombre').textContent);
+  });
+  const total = precioBase + extra;
+  document.getElementById('modal-total').innerHTML =
+    `Total: <span>${formatPrecio(total)}</span>`;
+
+  // Actualizar links WA
+  let msg = `Hola! Me interesa: *${nombreProducto}* — ${formatPrecio(precioBase)}`;
+  if(extras.length) msg += `\nAdicionales: ${extras.join(', ')} (+${formatPrecio(extra)})`;
+  msg += `\nTotal: ${formatPrecio(total)}`;
+  const txt = encodeURIComponent(msg);
+  document.getElementById('canal-1').href = `https://wa.me/57${TEL1.replace(/\D/g,'')}?text=${txt}`;
+  document.getElementById('canal-2').href = `https://wa.me/57${TEL2.replace(/\D/g,'')}?text=${txt}`;
+}
+function cerrarModal(e) {
+  if (!e || e.target===document.getElementById('modal-overlay') || e.currentTarget.classList.contains('modal-cerrar'))
+    document.getElementById('modal-overlay').classList.remove('abierto');
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') document.getElementById('modal-overlay').classList.remove('abierto'); });
+
+// CARGAR
+async function cargarCatalogo() {
+  let data;
+  try { const r=await fetch('catalogo.json'); if(!r.ok) throw 0; data=await r.json(); }
+  catch(e) { data=DATOS_EJEMPLO; }
+  renderizar(data);
+}
+
+function renderizar(data) {
+  const {negocio, categorias} = data;
+  registrarProductos(categorias);
+  document.title = negocio.nombre+' — Catálogo';
+  document.getElementById('marca-nombre').textContent = negocio.nombre;
+  document.getElementById('marca-slogan').textContent = negocio.slogan;
+  document.getElementById('footer-marca').textContent = negocio.nombre;
+  document.documentElement.style.setProperty('--morado', negocio.color_principal);
+  document.documentElement.style.setProperty('--rosa',   negocio.color_acento);
+  TEL1=negocio.telefono1; TEL2=negocio.telefono2;
+  ADICIONALES_GLOBAL = data.adicionales || [];
+
+  // BANNER ESPECIAL
+  const bs = data.banner_especial;
+  const bsWrap = document.getElementById('banner-especial-wrap');
+  bsWrap.innerHTML = '';
+  if(bs && bs.activo) {
+    const todosProductos = [];
+    categorias.forEach(cat => {
+      cat.productos.forEach(prod => todosProductos.push({prod, cat}));
+    });
+    const bsProductos = todosProductos.filter(({prod}) => bs.productos_ids.includes(prod.id));
+    if(bsProductos.length) {
+      const wrap = document.createElement('div');
+      wrap.className = 'banner-especial';
+      wrap.innerHTML = `
+        <div class="banner-especial-inner" style="background:${bs.color_fondo};border:2px solid ${bs.color_borde}">
+          <div class="banner-especial-titulo" style="color:${bs.color_texto}">${bs.titulo}</div>
+          <div class="banner-especial-sub" style="color:${bs.color_texto}">${bs.subtitulo}</div>
+          <div class="banner-especial-grid" id="bs-grid"></div>
+        </div>`;
+      bsWrap.appendChild(wrap);
+      const grid = document.getElementById('bs-grid');
+      bsProductos.forEach(({prod, cat}, pi) => {
+        const card = document.createElement('div');
+        card.className = 'tarjeta';
+        card.style.animationDelay = (pi * 0.08) + 's';
+        const imgHTML = prod.imagen
+          ? `<div class="tarjeta-img-wrap"><img class="tarjeta-img" src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'tarjeta-img-placeholder\'>${cat.emoji}</div>'"></div>`
+          : `<div class="tarjeta-img-wrap"><div class="tarjeta-img-placeholder">${cat.emoji}</div></div>`;
+        const nombreEsc = prod.nombre.replace(/'/g, "\'");
+        card.innerHTML = `${imgHTML}
+          <div class="tarjeta-body">
+            <div class="tarjeta-nombre">${prod.nombre}</div>
+            <div class="tarjeta-desc">${prod.descripcion}</div>
+            <div class="tarjeta-footer">
+              <span class="precio">${formatPrecio(prod.precio)}</span>
+              <button class="btn-pedir" onclick="abrirModal('${nombreEsc}',${prod.precio})">Pedir 💬</button>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+  }
+
+
+  const nums=document.getElementById('footer-nums');
+  [negocio.telefono1,negocio.telefono2].filter(Boolean).forEach((tel,i)=>{
+    const a=document.createElement('a');
+    a.href=`https://wa.me/57${tel.replace(/\D/g,'')}`;
+    a.target='_blank';
+    a.innerHTML=`📱 Canal ${i+1}: ${tel}`;
+    nums.appendChild(a);
+  });
+
+  // Filtros
+  const filtros=document.getElementById('filtros');
+  // "Todos" muestra banner de día del hombre
+  const btnTodas = mkFiltro('todas','✨ Todos', true);
+  filtros.appendChild(btnTodas);
+  categorias.forEach(cat=>filtros.appendChild(mkFiltro(cat.id, cat.emoji+' '+cat.nombre)));
+
+  // Catálogo
+  const main=document.getElementById('catalogo');
+
+  categorias.forEach((cat,ci)=>{
+    const sec=document.createElement('section');
+    sec.className='seccion'; sec.dataset.cat=cat.id;
+
+    let html=`<div class="seccion-titulo"><span class="emoji">${cat.emoji}</span><h2>${cat.nombre}</h2></div>`;
+    if(cat.banner) html+=`<div class="seccion-banner">${cat.banner}</div>`;
+    sec.innerHTML=html;
+
+    const grid=document.createElement('div'); grid.className='grid';
+
+    cat.productos.forEach((prod,pi)=>{
+      const esFigura = prod.imagen2 && prod.imagen2!=='';
+      const card=document.createElement('div');
+      card.className='tarjeta'+(esFigura?' tarjeta-figura':'')+(prod.disponible?'':' agotado');
+      card.style.animationDelay=(ci*.08+pi*.07)+'s';
+
+      let imgHTML;
+      if(esFigura) {
+        // Flip card
+        imgHTML=`
+          <div class="flip-wrap" title="Toca para ver el detalle" ontouchstart="this.classList.add('flipped')" ontouchend="this.classList.remove('flipped')" ontouchcancel="this.classList.remove('flipped')">
+            <button class="flip-detalle-btn" onclick="event.stopPropagation();abrirDetalle(${prod.id})">🔍 Ver detalle</button>
+            <div class="flip-inner">
+              <div class="flip-front">
+                <img src="${prod.imagen}" alt="${prod.nombre}"
+                  onerror="this.src=''">
+              </div>
+              <div class="flip-back">
+                <img src="${prod.imagen2}" alt="${prod.nombre} detalle"
+                  onerror="this.src=''">
+              </div>
+            </div>
+            <div class="flip-hint">👆 Toca para ver detalle</div>
+          </div>`;
+      } else {
+        imgHTML=`<div class="tarjeta-img-wrap" style="cursor:pointer" onclick="abrirDetalle(${prod.id})">
+          ${!prod.disponible?'<div class="badge-agotado">AGOTADO</div>':''}
+          ${prod.imagen
+            ? `<img class="tarjeta-img" src="${prod.imagen}" alt="${prod.nombre}" loading="lazy"
+                 onerror="this.parentElement.innerHTML='<div class=\\'tarjeta-img-placeholder\\'>${cat.emoji}</div>'">`
+            : `<div class="tarjeta-img-placeholder">${cat.emoji}</div>`}
+        </div>`;
+      }
+
+      const chips=(prod.colores||[]).map(c=>`<span class="color-chip ${chipClass(c)}">${c}</span>`).join('');
+      const nombreEsc=prod.nombre.replace(/'/g,"\\'");
+
+      card.innerHTML=`
+        ${imgHTML}
+        <div class="tarjeta-body">
+          <div class="tarjeta-nombre">${prod.nombre}</div>
+          <div class="tarjeta-desc">${prod.descripcion}</div>
+          ${chips?`<div class="colores-wrap">${chips}</div>`:''}
+          <div class="tarjeta-footer">
+            <span class="precio">${formatPrecio(prod.precio)}</span>
+            ${prod.disponible
+              ? `<button class="btn-pedir" onclick="abrirModal('${nombreEsc}',${prod.precio})">Pedir 💬</button>`
+              : `<span style="color:var(--gris);font-size:12px;font-weight:700">No disponible</span>`}
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+
+    sec.appendChild(grid);
+    main.appendChild(sec);
+  });
+}
+
+function mkFiltro(id,label,activo=false) {
+  const btn=document.createElement('button');
+  btn.className='filtro-btn'+(activo?' activo':'');
+  btn.textContent=label; btn.dataset.id=id;
+  btn.onclick=()=>{
+    document.querySelectorAll('.filtro-btn').forEach(b=>b.classList.remove('activo'));
+    btn.classList.add('activo');
+    const bannerHombre=document.getElementById('banner-hombre');
+    document.querySelectorAll('.seccion').forEach(s=>{
+      s.style.display=(id==='todas'||s.dataset.cat===id)?'':'none';
+    });
+    if(bannerHombre) bannerHombre.style.display=(id==='todas')?'':'none';
+  };
+  return btn;
+}
+
+const DATOS_EJEMPLO={
+  "negocio":{"nombre":"Florevah","slogan":"flores artesanales","telefono1":"318 458 8464","telefono2":"315 816 1746","color_principal":"#7c3aed","color_acento":"#f9a8d4"},
+  "categorias":[
+    {"id":"figuras","nombre":"Colección de Figuras y Personajes","emoji":"🎭","banner":"🔥 Regalos para el Día del Hombre 🔥","productos":[
+      {"id":11,"nombre":"🐢 Squirtle","descripcion":"Figura artesanal de Squirtle con detalle de caparazón en la espalda","precio":50000,"imagen":"","imagen2":"fotos/squirtle_detalle.jpg","colores":[],"disponible":true},
+      {"id":12,"nombre":"🦇 Batman","descripcion":"Macetero Batman con cara tejida y capa decorativa con logo dorado","precio":26000,"imagen":"","imagen2":"fotos/batman_detalle.jpg","colores":[],"disponible":true},
+      {"id":13,"nombre":"🔴 Deadpool","descripcion":"Macetero Deadpool con bonsái artesanal y espadas incluidas","precio":32000,"imagen":"","imagen2":"fotos/deadpool_detalle.jpg","colores":[],"disponible":true}
+    ]},
+    {"id":"ramos","nombre":"Ramos Especiales","emoji":"💐","productos":[
+      {"id":1,"nombre":"Ramo rojo","descripcion":"Tulipán y lirio rojo, papel dorado con moño","precio":35000,"imagen":"","imagen2":"","colores":[],"disponible":true},
+      {"id":2,"nombre":"Ramo azul","descripcion":"Lirio y tulipán azul, papel dorado y moño menta","precio":35000,"imagen":"","imagen2":"","colores":[],"disponible":true}
+    ]},
+    {"id":"maceteros","nombre":"Maceteros","emoji":"🌸","productos":[
+      {"id":3,"nombre":"Macetero 3 flores","descripcion":"Macetero tejido con carita feliz y 3 flores","precio":15000,"imagen":"","imagen2":"","colores":["Rojo","Morado","Verde","Rosa"],"disponible":true},
+      {"id":4,"nombre":"Macetero 4 flores (grande)","descripcion":"Macetero tejido con 4 flores, más grande","precio":18000,"imagen":"","imagen2":"","colores":["Amarillo"],"disponible":true},
+      {"id":5,"nombre":"Macetero 3 corazones","descripcion":"Macetero con carita feliz y 3 corazones","precio":18000,"imagen":"","imagen2":"","colores":["Azul","Verde"],"disponible":true},
+      {"id":6,"nombre":"Macetero 4 corazones (grande)","descripcion":"Macetero con 4 corazones, más grande","precio":20000,"imagen":"","imagen2":"","colores":["Amarillo"],"disponible":true},
+      {"id":7,"nombre":"Macetero Love ❤️","descripcion":"Corazones rojos con letrero love","precio":25000,"imagen":"","imagen2":"","colores":["Rojo"],"disponible":true}
+    ]},
+    {"id":"flores","nombre":"Flores Individuales","emoji":"🌻","productos":[
+      {"id":8,"nombre":"Girasol con tarjeta","descripcion":"Girasoles con tarjeta Feliz Día y moño","precio":12000,"imagen":"","imagen2":"","colores":[],"disponible":true},
+      {"id":9,"nombre":"Gerbera con tarjeta","descripcion":"Gerbera artesanal con tarjeta Feliz Día y moño","precio":12000,"imagen":"","imagen2":"","colores":["Azul","Morado","Beige","Rosado"],"disponible":true},
+      {"id":10,"nombre":"Flor especial pequeña con tarjeta","descripcion":"Flor artesanal pequeña con tarjeta Feliz Día y moño","precio":8000,"imagen":"","imagen2":"","colores":["Rojo","Amarillo","Morado","Otros"],"disponible":true}
+    ]}
+  ]
+};
+
+
+// MODO NOCTURNO
+const LOGO_LIGHT = 'fotos/logo.png';
+const LOGO_DARK  = 'fotos/logo_dark.png';
+
+function setLogo(dark) {
+  const logo = document.getElementById('logo-wrap');
+  if(logo && logo.tagName === 'IMG') logo.src = dark ? LOGO_DARK : LOGO_LIGHT;
+}
+function toggleDark() {
+  const isDark = document.body.classList.toggle('dark');
+  document.getElementById('toggle-dark').textContent = isDark ? '☀️' : '🌙';
+  setLogo(isDark);
+  localStorage.setItem('florevah-dark', isDark ? '1' : '0');
+}
+if(localStorage.getItem('florevah-dark')==='1'){
+  document.body.classList.add('dark');
+  document.getElementById('toggle-dark').textContent='☀️';
+  setLogo(true);
+}
+
+// MAPA GLOBAL DE PRODUCTOS (para el modal de detalle)
+const PRODUCTOS_MAP = {};
+function registrarProductos(cats) {
+  cats.forEach(cat => {
+    (cat.productos||[]).forEach(p => { PRODUCTOS_MAP[p.id] = p; });
+  });
+}
+
+// MODAL DETALLE
+function abrirDetalle(id) {
+  const prod = PRODUCTOS_MAP[id];
+  if(!prod) return;
+
+  document.getElementById('modal-detalle-img').src = prod.imagen || '';
+  document.getElementById('modal-detalle-img').alt = prod.nombre;
+  document.getElementById('modal-detalle-nombre').textContent = prod.nombre;
+  document.getElementById('modal-detalle-desc').textContent = prod.descripcion;
+  document.getElementById('modal-detalle-precio').textContent = formatPrecio(prod.precio);
+
+  const coloresWrap = document.getElementById('modal-detalle-colores-wrap');
+  const chipsEl = document.getElementById('modal-detalle-chips');
+  const label = document.getElementById('modal-detalle-colores-label');
+
+  if(prod.colores && prod.colores.length > 0) {
+    const tieneGorros = prod.colores.some(c => c.toLowerCase().includes('gorro') || c.toLowerCase() === 'personalizado');
+    label.textContent = tieneGorros ? 'Gorros disponibles' : 'Colores disponibles';
+    chipsEl.innerHTML = prod.colores.map(c=>`<span class="color-chip ${chipClass(c)}">${c}</span>`).join('');
+    coloresWrap.style.display = '';
+  } else {
+    coloresWrap.style.display = 'none';
+  }
+
+  const btn = document.getElementById('modal-detalle-btn');
+  if(prod.disponible) {
+    btn.style.display = '';
+    const nombreEsc = prod.nombre.replace(/'/g,"\\'");
+    btn.onclick = () => { cerrarDetalle(); abrirModal(nombreEsc, prod.precio); };
+  } else {
+    btn.style.display = 'none';
+  }
+
+  document.getElementById('modal-detalle-overlay').classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarDetalle(e) {
+  if(e && e.target !== document.getElementById('modal-detalle-overlay')) return;
+  document.getElementById('modal-detalle-overlay').classList.remove('abierto');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') cerrarDetalle();
+});
+
+cargarCatalogo();
+</script>
+</body>
+</html>
