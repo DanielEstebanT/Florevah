@@ -50,8 +50,8 @@
           "precio": 35000,
           "imagen": "fotos/lampara_frente.jpg",
           "imagenes": [
-            "fotos/lampara_frente.jpg",
-            "fotos/lampara_detalle.jpg"
+            "fotos/lampara_detalle.jpg",
+            "fotos/lampara_frente.jpg"
           ],
           "colores": [],
           "disponible": true
