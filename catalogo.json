@@ -230,7 +230,7 @@
           "nombre": "🌻 Caja Girasoles + Chocolates",
           "descripcion": "Caja artesanal con 2 girasoles y 4 chocolates artesanales, presentación lista para regalo con moño. ¡Elige el color del moño!",
           "precio": 45000,
-          "imagen": "fotos/caja_girasoles_choco.jpg",
+          "imagen": "fotos/caja_girasoles_rojo.jpg",
           "imagenes": [
             "fotos/caja_girasoles_azul.jpg",
             "fotos/caja_girasoles_rojo.jpg",
@@ -248,7 +248,7 @@
           "nombre": "🌸 Caja Gerberas + Chocolates",
           "descripcion": "Caja artesanal con 3 gerberas y 6 chocolates artesanales, presentación lista para regalo con moño.",
           "precio": 50000,
-          "imagen": "fotos/caja_gerberas_choco.jpg",
+          "imagen": "fotos/caja_gerberas_lila.jpg",
           "imagenes": [
             "fotos/caja_gerberas_lila.jpg",
             "fotos/caja_gerberas_choco.jpg"
