@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Florevah — Catálogo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --rosa:   #f9a8d4;
@@ -100,17 +98,6 @@
 
     /* GRID */
     .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:18px; }
-
-    /* Skeleton loading */
-    .skeleton { border-radius:20px; overflow:hidden; background:white; border:1.5px solid rgba(249,168,212,.3); }
-    .skeleton-img { width:100%; aspect-ratio:1/1; background:linear-gradient(90deg,#f0e8ff 25%,#e8d8ff 50%,#f0e8ff 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; }
-    .skeleton-body { padding:14px; }
-    .skeleton-line { height:12px; border-radius:6px; margin-bottom:8px; background:linear-gradient(90deg,#f0e8ff 25%,#e8d8ff 50%,#f0e8ff 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; }
-    .skeleton-line.short { width:60%; }
-    .skeleton-line.price { width:40%; height:16px; margin-top:12px; }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-    body.dark .skeleton { background:#1a0a2e; }
-    body.dark .skeleton-img, body.dark .skeleton-line { background:linear-gradient(90deg,#2d1b4e 25%,#3d2060 50%,#2d1b4e 75%); background-size:200% 100%; }
 
     /* TARJETA NORMAL */
     .tarjeta {
@@ -248,11 +235,9 @@
     }
     body.dark .modal-detalle { background:#1a0a2e; }
     .modal-detalle-img {
-      width:100%; aspect-ratio:1/1; object-fit:contain;
+      width:100%; aspect-ratio:1/1; object-fit:cover;
       border-radius:24px 24px 0 0; display:block;
-      background:#f5f0fa;
     }
-    body.dark .modal-detalle-img { background:#1a0a2e; }
     .modal-detalle-img[src*="ramo_rosa"] { object-position: center 60%; }
     .modal-detalle-cerrar {
       position:absolute; top:12px; right:12px;
@@ -519,7 +504,7 @@
 <body>
 <div class="contenido">
   <header>
-    <img class="logo-img" id="logo-wrap" src="fotos/logo.png" alt="Florevah" fetchpriority="high"
+    <img class="logo-img" id="logo-wrap" src="fotos/logo.png" alt="Florevah"
          onerror="this.outerHTML='<div class=\'logo-placeholder\'></div>'">
     <h1 class="marca" id="marca-nombre">Florevah</h1>
     <p class="slogan" id="marca-slogan">flores artesanales</p>
@@ -534,13 +519,7 @@
 
   <div class="filtros" id="filtros"></div>
   <div id="banner-especial-wrap"></div>
-  <main id="catalogo">
-    <div class="seccion" style="max-width:1100px;margin:0 auto 48px;padding:0 20px">
-      <div class="grid" id="skeleton-grid">
-        ${Array(6).fill('<div class="skeleton"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-line price"></div></div></div>').join('')}
-      </div>
-    </div>
-  </main>
+  <main id="catalogo"></main>
 
   <!-- POR QUÉ FLOREVAH -->
   <section class="porque-section">
@@ -723,9 +702,6 @@ async function cargarCatalogo() {
 function renderizar(data) {
   const {negocio, categorias} = data;
   registrarProductos(categorias);
-  // Limpiar skeletons
-  const main = document.getElementById('catalogo');
-  main.innerHTML = '';
   document.title = negocio.nombre+' — Catálogo';
   document.getElementById('marca-nombre').textContent = negocio.nombre;
   document.getElementById('marca-slogan').textContent = negocio.slogan;
@@ -761,15 +737,13 @@ function renderizar(data) {
         card.className = 'tarjeta';
         card.style.animationDelay = (pi * 0.08) + 's';
         const imgHTML = prod.imagen
-          ? `<div class="tarjeta-img-wrap" style="cursor:pointer" onclick="abrirDetalle(${prod.id})"><img class="tarjeta-img" src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'tarjeta-img-placeholder\'>${cat.emoji}</div>'"></div>`
+          ? `<div class="tarjeta-img-wrap"><img class="tarjeta-img" src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'tarjeta-img-placeholder\'>${cat.emoji}</div>'"></div>`
           : `<div class="tarjeta-img-wrap"><div class="tarjeta-img-placeholder">${cat.emoji}</div></div>`;
-        const chips = (prod.colores||[]).map(c=>`<span class="color-chip ${chipClass(c)}">${c}</span>`).join('');
         const nombreEsc = prod.nombre.replace(/'/g, "\'");
         card.innerHTML = `${imgHTML}
           <div class="tarjeta-body">
             <div class="tarjeta-nombre">${prod.nombre}</div>
             <div class="tarjeta-desc">${prod.descripcion}</div>
-            ${chips?`<div class="colores-wrap">${chips}</div>`:''}
             <div class="tarjeta-footer">
               <span class="precio">${formatPrecio(prod.precio)}</span>
               <button class="btn-pedir" onclick="abrirModal('${nombreEsc}',${prod.precio})">Pedir 💬</button>
@@ -832,7 +806,7 @@ function renderizar(data) {
                   onerror="this.src=''">
               </div>
             </div>
-            <div class="flip-hint">👆 Toca para voltear la imagen</div>
+            <div class="flip-hint">👆 Toca para ver detalle</div>
           </div>`;
       } else {
         imgHTML=`<div class="tarjeta-img-wrap" style="cursor:pointer" onclick="abrirDetalle(${prod.id})">
