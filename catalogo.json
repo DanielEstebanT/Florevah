@@ -232,9 +232,9 @@
           "precio": 45000,
           "imagen": "fotos/caja_girasoles_choco.jpg",
           "imagenes": [
-            "fotos/caja_girasoles_choco.jpg",
             "fotos/caja_girasoles_azul.jpg",
-            "fotos/caja_girasoles_rojo.jpg"
+            "fotos/caja_girasoles_rojo.jpg",
+            "fotos/caja_girasoles_choco.jpg"
           ],
           "colores": [
             "Listo",
@@ -250,8 +250,8 @@
           "precio": 50000,
           "imagen": "fotos/caja_gerberas_choco.jpg",
           "imagenes": [
-            "fotos/caja_gerberas_choco.jpg",
-            "fotos/caja_gerberas_lila.jpg"
+            "fotos/caja_gerberas_lila.jpg",
+            "fotos/caja_gerberas_choco.jpg"
           ],
           "colores": [],
           "disponible": true
