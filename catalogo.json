@@ -42,6 +42,19 @@
           "imagen2": "fotos/deadpool_detalle.jpg",
           "colores": [],
           "disponible": true
+        },
+        {
+          "id": 23,
+          "nombre": "🌷 Lámpara Floral Artesanal",
+          "descripcion": "Lámpara decorativa artesanal con flor campana rosa, pollito, hongos y florecitas. Completamente hecha a mano — una pieza única.",
+          "precio": 35000,
+          "imagen": "fotos/lampara_frente.jpg",
+          "imagenes": [
+            "fotos/lampara_frente.jpg",
+            "fotos/lampara_detalle.jpg"
+          ],
+          "colores": [],
+          "disponible": true
         }
       ]
     },
@@ -208,6 +221,44 @@
       ]
     },
     {
+      "id": "cajas",
+      "nombre": "Cajas Especiales",
+      "emoji": "🎁",
+      "productos": [
+        {
+          "id": 21,
+          "nombre": "🌻 Caja Girasoles + Chocolates",
+          "descripcion": "Caja artesanal con 2 girasoles y 4 chocolates artesanales, presentación lista para regalo con moño. ¡Elige el color del moño!",
+          "precio": 45000,
+          "imagen": "fotos/caja_girasoles_choco.jpg",
+          "imagenes": [
+            "fotos/caja_girasoles_choco.jpg",
+            "fotos/caja_girasoles_azul.jpg",
+            "fotos/caja_girasoles_rojo.jpg"
+          ],
+          "colores": [
+            "Listo",
+            "Azul",
+            "Rojo"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 22,
+          "nombre": "🌸 Caja Gerberas + Chocolates",
+          "descripcion": "Caja artesanal con 3 gerberas y 6 chocolates artesanales, presentación lista para regalo con moño.",
+          "precio": 50000,
+          "imagen": "fotos/caja_gerberas_choco.jpg",
+          "imagenes": [
+            "fotos/caja_gerberas_choco.jpg",
+            "fotos/caja_gerberas_lila.jpg"
+          ],
+          "colores": [],
+          "disponible": true
+        }
+      ]
+    },
+    {
       "id": "llaveros",
       "nombre": "Llaveros Artesanales",
       "emoji": "🔑",
@@ -218,7 +269,11 @@
           "descripcion": "Llavero artesanal de pollito amarillo. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡pídenos el tuyo!",
           "precio": 8000,
           "imagen": "fotos/llavero_pollo.jpg",
-          "colores": ["Gorro de fresa", "Gorro de oso", "Personalizado"],
+          "colores": [
+            "Gorro de fresa",
+            "Gorro de oso",
+            "Personalizado"
+          ],
           "disponible": true
         },
         {
@@ -227,7 +282,14 @@
           "descripcion": "Llavero artesanal de pulpito. Completamente hecho a mano, no tejido. Disponible en varios colores pastel — ¡elige el tuyo!",
           "precio": 5000,
           "imagen": "fotos/llavero_pulpo.jpg",
-          "colores": ["Lila", "Azul bebé", "Menta", "Gris", "Amarillo pastel", "Palo de rosa"],
+          "colores": [
+            "Lila",
+            "Azul bebé",
+            "Menta",
+            "Gris",
+            "Amarillo pastel",
+            "Palo de rosa"
+          ],
           "disponible": true
         },
         {
@@ -236,7 +298,13 @@
           "descripcion": "Llavero artesanal de marshmallow con gorrito. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡pídenos el tuyo!",
           "precio": 6000,
           "imagen": "fotos/llavero_masmelo.jpg",
-          "colores": ["Gorro de oso", "Gorro de sapito", "Gorro de zorro", "Gorro de gato", "Personalizado"],
+          "colores": [
+            "Gorro de oso",
+            "Gorro de sapito",
+            "Gorro de zorro",
+            "Gorro de gato",
+            "Personalizado"
+          ],
           "disponible": true
         }
       ]
@@ -280,6 +348,20 @@
     "color_fondo": "#fdf2f8",
     "color_borde": "#f9a8d4",
     "color_texto": "#831843",
-    "productos_ids": [18, 19, 20, 1, 2, 15, 16, 17, 5, 6, 7]
+    "productos_ids": [
+      21,
+      22,
+      18,
+      19,
+      20,
+      1,
+      2,
+      15,
+      16,
+      17,
+      5,
+      6,
+      7
+    ]
   }
 }
