@@ -65,9 +65,21 @@
       "emoji": "💐",
       "productos": [
         {
+          "id": 24,
+          "nombre": "Buquete de tulipanes encapsulado",
+          "descripcion": "Arreglo artesanal de 4 tulipanes, encapsulado en un globo transparante rodeado de un listo con moño rojo sobre una caja cilindrica con moño.",
+          "precio": 70000,
+          "imagen": "fotos/ramo_rojo_encap.png",
+          "colores": [
+            "Rojo",
+            "Personalizado"
+          ],
+          "disponible": true
+        },
+        {
           "id": 18,
           "nombre": "🎈 Arreglo con globo rojo",
-          "descripcion": "Arreglo artesanal con 4 tulipanes rojos, globo decorativo 'Feliz Día Mamá' y presentación lista para regalo. ¡También hacemos diseños personalizados!",
+          "descripcion": "Arreglo artesanal con 4 tulipanes rojos, globo decorativo 'Feliz Día Mamá' sobre una caja cilindrica con moño.",
           "precio": 65000,
           "imagen": "fotos/ramo_globo_rojo.webp",
           "colores": [],
@@ -76,7 +88,7 @@
         {
           "id": 19,
           "nombre": "🎈 Arreglo con globo rosa",
-          "descripcion": "Arreglo artesanal con 4 tulipanes + 2 gerberas, globo decorativo 'Feliz Día Mamá' y presentación lista para regalo. ¡También hacemos diseños personalizados!",
+          "descripcion": "Arreglo artesanal con 4 tulipanes + 2 gerberas, globo decorativo 'Feliz Día Mamá' rodeado de liston sobre una caja cilindrica con moño.",
           "precio": 75000,
           "imagen": "fotos/ramo_globo_rosa.webp",
           "colores": [],
@@ -127,7 +139,7 @@
             "Morado",
             "Verde",
             "Rosa",
-            "personalizado"
+            "Personalizado"
           ],
           "disponible": true
         },
@@ -194,6 +206,15 @@
       "emoji": "🌻",
       "productos": [
         {
+          "id": 25,
+          "nombre": "Miniramo Gerbera",
+          "descripcion": "Gerbera artesanal en un mini ramo de papel beige y dorado, con listo beige",
+          "precio": 12000,
+          "imagen": "fotos/gerbera_miniramo.jpg",
+          "colores": [],
+          "disponible": true
+        },
+        {
           "id": 8,
           "nombre": "Girasol con tarjeta",
           "descripcion": "Girasoles artesanales con tarjeta 'Feliz Día' y moño",
@@ -218,7 +239,7 @@
         },
         {
           "id": 10,
-          "nombre": "Flor especial pequeña con tarjeta",
+          "nombre": "Flor pequeña con tarjeta",
           "descripcion": "Flor artesanal pequeña con tarjeta 'Feliz Día' y moño",
           "precio": 8000,
           "imagen": "fotos/flores_tarjeta.jpg",
