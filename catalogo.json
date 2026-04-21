@@ -51,7 +51,8 @@
           "imagen": "fotos/lampara_frente.jpg",
           "imagenes": [
             "fotos/lampara_detalle.jpg",
-            "fotos/lampara_frente.jpg"
+            "fotos/lampara_frente.jpg",
+            "fotos/lampara_noche"
           ],
           "colores": [],
           "disponible": true
@@ -84,7 +85,7 @@
         {
           "id": 20,
           "nombre": "Ramo rosa",
-          "descripcion": "Tulipán rosa, lirio y florecitas artesanales con papel dorado y moño crema",
+          "descripcion": "Tulipán rosa, lirio rosa y flores blancas con papel dorado y moño crema",
           "precio": 35000,
           "imagen": "fotos/ramo_rosa.png",
           "colores": [],
@@ -93,7 +94,7 @@
         {
           "id": 1,
           "nombre": "Ramo rojo",
-          "descripcion": "Tulipán y lirio rojo con flores blancas, papel dorado con moño",
+          "descripcion": "Tulipán rojo y lirio rojo con flores blancas con papel dorado y moño crema",
           "precio": 35000,
           "imagen": "fotos/ramo_rojo.png",
           "colores": [],
@@ -102,7 +103,7 @@
         {
           "id": 2,
           "nombre": "Ramo azul",
-          "descripcion": "Lirio y tulipán azul con florecitas blancas, papel dorado y moño menta",
+          "descripcion": "Lirio y tulipán azul con flores blancas con papel dorado y moño menta y crema",
           "precio": 35000,
           "imagen": "fotos/ramo_azul.jpg",
           "colores": [],
@@ -125,7 +126,8 @@
             "Rojo",
             "Morado",
             "Verde",
-            "Rosa"
+            "Rosa",
+            "personalizado"
           ],
           "disponible": true
         },
@@ -136,7 +138,12 @@
           "precio": 18000,
           "imagen": "fotos/maceteros_flores.jpg",
           "colores": [
-            "Amarillo"
+            "Amarillo",
+            "Rojo",
+            "Morado",
+            "Verde",
+            "Rosa",
+            "Personalizado"
           ],
           "disponible": true
         },
@@ -147,8 +154,10 @@
           "precio": 18000,
           "imagen": "fotos/mac_corazones.jpg",
           "colores": [
+            "Amarillo",
             "Azul",
-            "Verde"
+            "Verde",
+            "Personalizado"
           ],
           "disponible": true
         },
@@ -159,7 +168,10 @@
           "precio": 20000,
           "imagen": "fotos/macetero4_corazones.png",
           "colores": [
-            "Amarillo"
+            "Amarillo",
+            "Azul",
+            "Verde",
+            "Personalizado"
           ],
           "disponible": true
         },
