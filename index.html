@@ -778,13 +778,15 @@ function renderizar(data) {
         card.className = 'tarjeta';
         card.style.animationDelay = (pi * 0.08) + 's';
         const imgHTML = prod.imagen
-          ? `<div class="tarjeta-img-wrap"><img class="tarjeta-img" src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'tarjeta-img-placeholder\'>${cat.emoji}</div>'"></div>`
+          ? `<div class="tarjeta-img-wrap" style="cursor:pointer" onclick="abrirDetalle(${prod.id})"><img class="tarjeta-img" src="${prod.imagen}" alt="${prod.nombre}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'tarjeta-img-placeholder\'>${cat.emoji}</div>'"></div>`
           : `<div class="tarjeta-img-wrap"><div class="tarjeta-img-placeholder">${cat.emoji}</div></div>`;
+        const chips = (prod.colores||[]).map(c=>`<span class="color-chip ${chipClass(c)}">${c}</span>`).join('');
         const nombreEsc = prod.nombre.replace(/'/g, "\'");
         card.innerHTML = `${imgHTML}
           <div class="tarjeta-body">
             <div class="tarjeta-nombre">${prod.nombre}</div>
             <div class="tarjeta-desc">${prod.descripcion}</div>
+            ${chips?`<div class="colores-wrap">${chips}</div>`:''}
             <div class="tarjeta-footer">
               <span class="precio">${formatPrecio(prod.precio)}</span>
               <button class="btn-pedir" onclick="abrirModal('${nombreEsc}',${prod.precio})">Pedir 💬</button>
@@ -891,10 +893,12 @@ function mkFiltro(id,label,activo=false) {
     document.querySelectorAll('.filtro-btn').forEach(b=>b.classList.remove('activo'));
     btn.classList.add('activo');
     const bannerHombre=document.getElementById('banner-hombre');
+    const bannerEspecial=document.getElementById('banner-especial-wrap');
     document.querySelectorAll('.seccion').forEach(s=>{
       s.style.display=(id==='todas'||s.dataset.cat===id)?'':'none';
     });
     if(bannerHombre) bannerHombre.style.display=(id==='todas')?'':'none';
+    if(bannerEspecial) bannerEspecial.style.display=(id==='todas')?'':'none';
   };
   return btn;
 }
