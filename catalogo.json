@@ -66,7 +66,7 @@
       "productos": [
         {
           "id": 24,
-          "nombre": "Arreglo com ramo encapsulado",
+          "nombre": "🎈 Arreglo con ramo encapsulado",
           "descripcion": "Arreglo artesanal de 4 tulipanes, encapsulado en un globo transparante rodeado de un liston con moño rojo sobre una caja cilindrica con moño.",
           "precio": 70000,
           "imagen": "fotos/ramo_rojo_encap.png",
@@ -146,7 +146,7 @@
         {
           "id": 4,
           "nombre": "Macetero 4 flores",
-          "descripcion": "Macetero con carita feliz y 4 flores — más grande",
+          "descripcion": "Macetero con carita feliz y 4 flores.",
           "precio": 18000,
           "imagen": "fotos/maceteros_flores.jpg",
           "colores": [
@@ -176,7 +176,7 @@
         {
           "id": 6,
           "nombre": "Macetero 4 corazones",
-          "descripcion": "Macetero con carita feliz y 4 corazones — más grande",
+          "descripcion": "Macetero con carita feliz y 4 corazones",
           "precio": 20000,
           "imagen": "fotos/macetero4_corazones.png",
           "colores": [
@@ -208,7 +208,7 @@
         {
           "id": 25,
           "nombre": "Miniramo",
-          "descripcion": "Flor artesanal (gerbera u otra flor) en un mini ramo de papel beige y dorado, con listo beige",
+          "descripcion": "Flor artesanal (gerbera u otra flor) en un mini ramo de papel beige y dorado, con liston beige",
           "precio": 12000,
           "imagen": "fotos/gerbera_miniramo.jpeg",
           "colores": [],
@@ -298,7 +298,7 @@
         {
           "id": 15,
           "nombre": "🐣 Llavero Pollo",
-          "descripcion": "Llavero artesanal de pollito amarillo. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡pídenos el tuyo!",
+          "descripcion": "Llavero artesanal de pollito amarillo. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡elige el tuyo!",
           "precio": 8000,
           "imagen": "fotos/llavero_pollo.jpg",
           "colores": [
@@ -327,7 +327,7 @@
         {
           "id": 17,
           "nombre": "🤍 Llavero Masmelo",
-          "descripcion": "Llavero artesanal de masmelo con gorrito. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡pídenos el tuyo!",
+          "descripcion": "Llavero artesanal de masmelo con gorrito. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡elige el tuyo!",
           "precio": 6000,
           "imagen": "fotos/llavero_masmelo.jpg",
           "colores": [
