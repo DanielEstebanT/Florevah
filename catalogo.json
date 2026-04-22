@@ -46,7 +46,7 @@
         {
           "id": 23,
           "nombre": "🌷 Lámpara Floral Artesanal",
-          "descripcion": "Lámpara decorativa artesanal con flor campana rosa, pollito, hongos y florecitas. Completamente hecha a mano — una pieza única.",
+          "descripcion": "Lámpara decorativa artesanal con flor, pollito, hongos y florecitas. Completamente hecha a mano — una pieza única.",
           "precio": 35000,
           "imagen": "fotos/lampara_frente.jpg",
           "imagenes": [
@@ -66,8 +66,8 @@
       "productos": [
         {
           "id": 24,
-          "nombre": "Buquete de tulipanes encapsulado",
-          "descripcion": "Arreglo artesanal de 4 tulipanes, encapsulado en un globo transparante rodeado de un listo con moño rojo sobre una caja cilindrica con moño.",
+          "nombre": "Arreglo com ramo encapsulado",
+          "descripcion": "Arreglo artesanal de 4 tulipanes, encapsulado en un globo transparante rodeado de un liston con moño rojo sobre una caja cilindrica con moño.",
           "precio": 70000,
           "imagen": "fotos/ramo_rojo_encap.png",
           "colores": [
@@ -115,7 +115,7 @@
         {
           "id": 2,
           "nombre": "Ramo azul",
-          "descripcion": "Lirio y tulipán azul con flores blancas con papel dorado y moño menta y crema",
+          "descripcion": "Lirio y tulipán azul con flores blancas con papel dorado y moño menta",
           "precio": 35000,
           "imagen": "fotos/ramo_azul.jpg",
           "colores": [],
@@ -207,8 +207,8 @@
       "productos": [
         {
           "id": 25,
-          "nombre": "Miniramo Gerbera",
-          "descripcion": "Gerbera artesanal en un mini ramo de papel beige y dorado, con listo beige",
+          "nombre": "Miniramo",
+          "descripcion": "Flor artesanal (gerbera u otra flor) en un mini ramo de papel beige y dorado, con listo beige",
           "precio": 12000,
           "imagen": "fotos/gerbera_miniramo.jpeg",
           "colores": [],
@@ -327,7 +327,7 @@
         {
           "id": 17,
           "nombre": "🤍 Llavero Masmelo",
-          "descripcion": "Llavero artesanal de marshmallow con gorrito. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡pídenos el tuyo!",
+          "descripcion": "Llavero artesanal de masmelo con gorrito. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡pídenos el tuyo!",
           "precio": 6000,
           "imagen": "fotos/llavero_masmelo.jpg",
           "colores": [
