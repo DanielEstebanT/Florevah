@@ -1,0 +1,402 @@
+{
+  "negocio": {
+    "nombre": "Florevah",
+    "slogan": "flores artesanales",
+    "telefono1": "318 458 8464",
+    "telefono2": "315 816 1746",
+    "color_principal": "#7c3aed",
+    "color_acento": "#f9a8d4"
+  },
+  "categorias": [
+    {
+      "id": "figuras",
+      "nombre": "Colección de Figuras y Personajes",
+      "emoji": "🎭",
+      "productos": [
+        {
+          "id": 11,
+          "nombre": "🐢 Squirtle",
+          "descripcion": "Figura artesanal de Squirtle",
+          "precio": 50000,
+          "imagen": "fotos/squirtle_frente.jpg",
+          "imagen2": "fotos/squirtle_detalle.jpg",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 12,
+          "nombre": "🦇 Batman",
+          "descripcion": "Macetero Batman con capa decorativa y logo dorado",
+          "precio": 26000,
+          "imagen": "fotos/batman_frente.jpg",
+          "imagen2": "fotos/batman_detalle.jpg",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 13,
+          "nombre": "🔴 Deadpool",
+          "descripcion": "Macetero Deadpool con bonsái artesanal y espadas incluidas",
+          "precio": 32000,
+          "imagen": "fotos/deadpool_frente.jpg",
+          "imagen2": "fotos/deadpool_detalle.jpg",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 23,
+          "nombre": "🌷 Lámpara Floral Artesanal",
+          "descripcion": "Lámpara decorativa artesanal con flor, pollito, hongos y florecitas. Completamente hecha a mano — una pieza única.",
+          "precio": 35000,
+          "imagen": "fotos/lampara_frente.jpg",
+          "imagenes": [
+            "fotos/lampara_detalle.jpg",
+            "fotos/lampara_frente.jpg",
+            "fotos/lampara_noche.jpeg"
+          ],
+          "colores": [],
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": "ramos",
+      "nombre": "Ramos Especiales",
+      "emoji": "💐",
+      "productos": [
+        {
+          "id": 24,
+          "nombre": "🎈 Arreglo con ramo encapsulado",
+          "descripcion": "Arreglo artesanal de 4 tulipanes, encapsulado en un globo transparante rodeado de un liston con moño rojo sobre una caja cilindrica con moño.",
+          "precio": 70000,
+          "imagen": "fotos/ramo_rojo_encap.png",
+          "colores": [
+            "Rojo",
+            "Personalizado"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 18,
+          "nombre": "🎈 Arreglo con globo rojo",
+          "descripcion": "Arreglo artesanal con 4 tulipanes rojos, globo decorativo 'Feliz Día Mamá' sobre una caja cilindrica con moño.",
+          "precio": 65000,
+          "imagen": "fotos/ramo_globo_rojo.webp",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 19,
+          "nombre": "🎈 Arreglo con globo rosa",
+          "descripcion": "Arreglo artesanal con 4 tulipanes + 2 gerberas, globo decorativo 'Feliz Día Mamá' rodeado de liston sobre una caja cilindrica con moño.",
+          "precio": 75000,
+          "imagen": "fotos/ramo_globo_rosa.webp",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 20,
+          "nombre": "Ramo rosa",
+          "descripcion": "Tulipán rosa, lirio rosa y flores blancas con papel dorado y moño crema",
+          "precio": 35000,
+          "imagen": "fotos/ramo_rosa.png",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 1,
+          "nombre": "Ramo rojo",
+          "descripcion": "Tulipán rojo y lirio rojo con flores blancas con papel dorado y moño crema",
+          "precio": 35000,
+          "imagen": "fotos/ramo_rojo.png",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 2,
+          "nombre": "Ramo azul",
+          "descripcion": "Lirio y tulipán azul con flores blancas con papel dorado y moño menta",
+          "precio": 35000,
+          "imagen": "fotos/ramo_azul.jpg",
+          "colores": [],
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": "maceteros",
+      "nombre": "Maceteros",
+      "emoji": "🌸",
+      "productos": [
+        {
+          "id": 3,
+          "nombre": "Macetero 3 flores",
+          "descripcion": "Macetero con carita feliz y 3 flores",
+          "precio": 15000,
+          "imagen": "fotos/maceteros_flores.jpg",
+          "colores": [
+            "Rojo",
+            "Morado",
+            "Verde",
+            "Rosa",
+            "Personalizado"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 4,
+          "nombre": "Macetero 4 flores",
+          "descripcion": "Macetero con carita feliz y 4 flores.",
+          "precio": 18000,
+          "imagen": "fotos/maceteros_flores.jpg",
+          "colores": [
+            "Amarillo",
+            "Rojo",
+            "Morado",
+            "Verde",
+            "Rosa",
+            "Personalizado"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 5,
+          "nombre": "Macetero 3 corazones",
+          "descripcion": "Macetero con carita feliz y 3 corazones",
+          "precio": 18000,
+          "imagen": "fotos/mac_corazones.jpg",
+          "colores": [
+            "Amarillo",
+            "Azul",
+            "Verde",
+            "Personalizado"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 6,
+          "nombre": "Macetero 4 corazones",
+          "descripcion": "Macetero con carita feliz y 4 corazones",
+          "precio": 20000,
+          "imagen": "fotos/macetero4_corazones_azul.png",
+          "colores": [
+            "Amarillo",
+            "Azul",
+            "Verde",
+            "Personalizado"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 7,
+          "nombre": "Macetero Love ❤️",
+          "descripcion": "Macetero especial con corazones rojos y letrero 'love'",
+          "precio": 25000,
+          "imagen": "fotos/mac_love.jpg",
+          "colores": [
+            "Rojo"
+          ],
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": "flores",
+      "nombre": "Flores Individuales",
+      "emoji": "🌻",
+      "productos": [
+        {
+          "id": 25,
+          "nombre": "🌷 MiniRamo",
+          "descripcion": "Flor artesanal (gerbera u otra flor) en un mini ramo de papel beige y dorado, con liston beige",
+          "precio": 12000,
+          "imagen": "fotos/miniramo_azul.png",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 8,
+          "nombre": "Girasol con tarjeta",
+          "descripcion": "Girasoles artesanales con tarjeta 'Feliz Día' y moño",
+          "precio": 12000,
+          "imagen": "fotos/girasoles.jpg",
+          "colores": [],
+          "disponible": true
+        },
+        {
+          "id": 9,
+          "nombre": "Gerbera con tarjeta",
+          "descripcion": "Gerbera artesanal con tarjeta 'Feliz Día' y moño",
+          "precio": 12000,
+          "imagen": "fotos/gerberas.jpg",
+          "colores": [
+            "Azul",
+            "Morado",
+            "Beige",
+            "Rosado"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 10,
+          "nombre": "Flor pequeña con tarjeta",
+          "descripcion": "Flor artesanal pequeña con tarjeta 'Feliz Día' y moño",
+          "precio": 8000,
+          "imagen": "fotos/flores_tarjeta.jpg",
+          "colores": [
+            "Rojo",
+            "Amarillo",
+            "Morado",
+            "Otros"
+          ],
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": "cajas",
+      "nombre": "Cajas Especiales",
+      "emoji": "🎁",
+      "productos": [
+        {
+          "id": 21,
+          "nombre": "🌻 Caja Girasoles + Chocolates",
+          "descripcion": "Caja artesanal con 2 girasoles y 4 chocolates artesanales, presentación lista para regalo con moño. ¡Elige el color del moño!",
+          "precio": 45000,
+          "imagen": "fotos/caja_girasoles_rojo.jpg",
+          "imagenes": [
+            "fotos/caja_girasoles_azul.jpg",
+            "fotos/caja_girasoles_rojo.jpg",
+            "fotos/caja_girasoles_choco.jpg"
+          ],
+          "colores": [
+            "Azul",
+            "Rojo"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 22,
+          "nombre": "🌸 Caja Gerberas + Chocolates",
+          "descripcion": "Caja artesanal con 3 gerberas y 6 chocolates artesanales, presentación lista para regalo con moño.",
+          "precio": 50000,
+          "imagen": "fotos/caja_gerberas_lila.jpg",
+          "imagenes": [
+            "fotos/caja_gerberas_lila.jpg",
+            "fotos/caja_gerberas_choco.jpg"
+          ],
+          "colores": [],
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": "llaveros",
+      "nombre": "Llaveros Artesanales",
+      "emoji": "🔑",
+      "productos": [
+        {
+          "id": 15,
+          "nombre": "🐣 Llavero Pollo",
+          "descripcion": "Llavero artesanal de pollito amarillo. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🍓 gorro de fresa, 🐻 gorro de oso, u otros gorros personalizados — ¡elige el tuyo!",
+          "precio": 8000,
+          "imagen": "fotos/llavero_pollo.jpg",
+          "colores": [
+            "Gorro de fresa",
+            "Gorro de oso",
+            "Personalizado"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 16,
+          "nombre": "🐙 Llavero Pulpo",
+          "descripcion": "Llavero artesanal de pulpito. Completamente hecho a mano, no tejido. Disponible en varios colores pastel — ¡elige el tuyo!",
+          "precio": 5000,
+          "imagen": "fotos/llavero_pulpo.jpg",
+          "colores": [
+            "Lila",
+            "Azul bebé",
+            "Menta",
+            "Gris",
+            "Amarillo pastel",
+            "Palo de rosa"
+          ],
+          "disponible": true
+        },
+        {
+          "id": 17,
+          "nombre": "🤍 Llavero Masmelo",
+          "descripcion": "Llavero artesanal de masmelo con gorrito. Completamente hecho a mano, no tejido. Personalizable con diferentes gorros: 🐻 gorro de oso, 🐸 de sapito, 🦊 de zorro, 🐱 de gato, u otros gorros personalizados — ¡elige el tuyo!",
+          "precio": 6000,
+          "imagen": "fotos/llavero_masmelo.jpg",
+          "colores": [
+            "Gorro de oso",
+            "Gorro de sapito",
+            "Gorro de zorro",
+            "Gorro de gato",
+            "Personalizado"
+          ],
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": "tematicos",
+      "nombre": "Maceteros Temáticos",
+      "emoji": "⚽",
+      "productos": [
+        {
+          "id": 14,
+          "nombre": "⚽ Macetero FC Barcelona",
+          "descripcion": "Macetero artesanal con los colores del Barça (o tu equipo favorito) y como flor un lirio de la paz. El valor NO incluye chocolates ni tarjeta",
+          "precio": 35000,
+          "imagen": "fotos/barcelona.jpeg",
+          "imagen2": "",
+          "colores": [],
+          "disponible": true
+        }
+      ]
+    }
+  ],
+  "adicionales": [
+    {
+      "id": "chocolates",
+      "nombre": "🍫 Chocolates",
+      "descripcion": "Selección de chocolates incluida en el arreglo",
+      "precio": 5000
+    },
+    {
+      "id": "tarjeta",
+      "nombre": "💌 Tarjeta personalizada",
+      "descripcion": "Tarjeta con mensaje especial para dedicar",
+      "precio": 1000
+    }
+  ],
+  "banner_especial": {
+    "activo": true,
+    "titulo": "🌸 Regalos Especiales para el Día de la Madre 🌸",
+    "subtitulo": "Detalles únicos, elegantes y artesanales para sorprender a mamá. ¡También hacemos diseños personalizados según colores o estilo que quieras!",
+    "color_fondo": "#fdf2f8",
+    "color_borde": "#f9a8d4",
+    "color_texto": "#831843",
+    "productos_ids": [
+      24,
+      21,
+      22,
+      23,
+      25,
+      20,
+      15,
+      16,
+      17,
+      5,
+      6,
+      7,
+      18,
+      19,
+      1,
+      2
+    ]
+  }
+}
