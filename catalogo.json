@@ -179,6 +179,10 @@
           "descripcion": "Macetero con carita feliz y 4 corazones",
           "precio": 20000,
           "imagen": "fotos/macetero4_corazones_azul.png",
+          "imagenes": [
+            "fotos/macetero4_corazones_azul.png",
+            "fotos/macetero4_corazones.png"
+          ],
           "colores": [
             "Amarillo",
             "Azul",
