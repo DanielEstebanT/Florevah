@@ -52,9 +52,15 @@
           "imagenes": [
             "fotos/lampara_detalle.jpg",
             "fotos/lampara_frente.jpg",
+            "fotos/lampara_lila.png",
             "fotos/lampara_noche.jpeg"
           ],
-          "colores": [],
+          "colores": [
+            "Rosado pastel",
+            "Lila",
+            "Verde menta",
+            "Amarillo pastel"
+          ],
           "disponible": true
         }
       ]
@@ -236,7 +242,11 @@
           "nombre": "Gerbera con tarjeta",
           "descripcion": "Gerbera artesanal con tarjeta 'Feliz Día' y moño",
           "precio": 12000,
-          "imagen": "fotos/gerberas.jpg",
+          "imagen": "fotos/gerberas.png",
+          "imagenes": [
+            "fotos/gerberas.png",
+            "fotos/gerberas.png.jpg"
+          ],
           "colores": [
             "Azul",
             "Morado",
