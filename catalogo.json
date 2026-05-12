@@ -217,7 +217,8 @@
           "imagen": "fotos/miniramo_azul.png",
           "imagenes": [
             "fotos/miniramo_azul.png",
-            "fotos/miniramo_rojo.jpeg",
+            "fotos/miniramo_rojo.jpeg"
+            ],
           "colores": [],
           "disponible": true
         },
