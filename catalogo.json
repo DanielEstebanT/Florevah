@@ -215,6 +215,9 @@
           "descripcion": "Flor artesanal (gerbera u otra flor) en un mini ramo de papel beige y dorado, con liston beige",
           "precio": 12000,
           "imagen": "fotos/miniramo_azul.png",
+          "imagenes": [
+            "fotos/miniramo_azul.png",
+            "fotos/miniramo_rojo.jpeg",
           "colores": [],
           "disponible": true
         },
