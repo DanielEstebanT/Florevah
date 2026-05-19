@@ -235,7 +235,7 @@
           "precio": 12000,
           "imagen": "fotos/girasoles.jpg",
           "colores": [],
-          "disponible": true
+          "disponible": false
         },
         {
           "id": 9,
