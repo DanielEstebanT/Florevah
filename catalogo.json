@@ -243,10 +243,9 @@
           "nombre": "Gerbera con tarjeta",
           "descripcion": "Gerbera artesanal con tarjeta 'Feliz Día' y moño",
           "precio": 12000,
-          "imagen": "fotos/gerberas.png",
+          "imagen": "fotos/tarjeta_gerbera.png",
           "imagenes": [
-            "fotos/gerberas.png",
-            "fotos/gerberas.jpg"
+            "fotos/tarjeta_gerbera.png"
           ],
           "colores": [
             "Azul",
